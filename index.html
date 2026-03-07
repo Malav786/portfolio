@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malav's Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="images/image.png" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .projects {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.projects .article-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.projects .filter-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.projects .filter-item button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  background-color: #0077ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.projects .filter-item button.active {
+  background-color: #005bb5;
+}
+
+.projects .filter-select-box {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.projects .filter-select {
+  background-color: #eee;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.projects .select-icon ion-icon {
+  font-size: 1.2rem;
+}
+
+.projects .select-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.projects .select-item button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Scoped Card Grid */
+.projects .project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.projects .project-item .card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projects .project-item .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.projects .project-title a {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.projects .project-title a:hover {
+  color: #0077ff;
+  text-decoration: underline;
+}
+
+.projects .project-item p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.projects .project-item ul {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  color: #333;
+  font-size: 0.92rem;
+}
+
+.projects .project-item ul li {
+  margin-bottom: 0.5rem;
+}
+
+.projects strong {
+  color: #000;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="images/image.png" alt="Malav Champaneria">
+	</figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Malav Champaneria">Malav Champaneria</h1>
+
+          <p class="title">Computer Science Engineer</p>
+        </div>
+
+        <ion-icon name="moon-outline" id="icon"></ion-icon>
+        
+        <button class="info_more-btn" data-sidebar-btn>
+            <span>Show Contacts</span>
+
+            <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto: mchamp.2509@gmail.com" class="contact-link">mchamp2509@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+18568319928" class="contact-link">+1 856-831-9928</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="2002-05-01">Aug 10, 2002</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>New Jersey, USA</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+    <!--
+      - #SOCIALS
+    -->
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="http://linkedin.com/in/malav-champaneria" target="_blank">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/Malav786" target="_blank">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://malav786.github.io/" target="_blank">
+              <ion-icon name="code-slash"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Projects</button>
+          </li>
+
+          <!--
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li>
+        -->
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+        <section class="about-text">
+          <p>
+            <b>Artificial Intelligence and Machine Learning Engineer</b>
+          </p>
+        
+          <p>
+            With a strong foundation in Artificial Intelligence and Machine Learning, I specialize in developing intelligent systems for real-world applications, ranging from autonomous robotics and semantic search to time series forecasting and computer vision. My work blends deep learning, NLP, and data analysis to solve complex problems in diverse domains.
+          </p>
+        
+          <p>
+            I have hands-on experience with tools and frameworks like TensorFlow, Scikit-learn, BERT, and Sentence Transformers, and have deployed AI models in scalable environments using Flask, FastAPI, and Streamlit. My research has contributed to advanced autonomous navigation systems, multilingual semantic search, and labor market analytics, with multiple publications in Springer and Elsevier.
+          </p>
+        
+          <p>
+            Currently pursuing a Master’s in Computer Science at Rutgers University, I’m driven by a passion for applied AI—integrating data-driven methods and machine learning to build efficient, innovative, and impactful solutions.
+          </p>
+        </section>
+        
+
+        <!--
+          - service
+        -->
+        <section class="service">
+
+          <h3 class="h3 service-title">What I'm Doing</h3>
+        
+          <ul class="service-list">
+        
+            <li class="service-item">
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
+                  <path d="M19.5 17C19.37 17 19.24 17 19.11 17.04L17.5 13.79C17.95 13.34 18.25 12.71 18.25 12C18.25 10.62 17.13 9.5 15.75 9.5C15.62 9.5 15.5 9.5 15.36 9.54L13.73 6.29C14.21 5.84 14.5 5.21 14.5 4.5C14.5 3.12 13.38 2 12 2S9.5 3.12 9.5 4.5C9.5 5.21 9.79 5.84 10.26 6.29L8.64 9.54C8.5 9.5 8.38 9.5 8.25 9.5C6.87 9.5 5.75 10.62 5.75 12C5.75 12.71 6.05 13.34 6.5 13.79L4.89 17.04C4.76 17 4.63 17 4.5 17C3.12 17 2 18.12 2 19.5C2 20.88 3.12 22 4.5 22S7 20.88 7 19.5C7 18.8 6.71 18.16 6.24 17.71L7.86 14.46C8 14.5 8.12 14.5 8.25 14.5C8.38 14.5 8.5 14.5 8.64 14.46L10.27 17.71C9.8 18.16 9.5 18.8 9.5 19.5C9.5 20.88 10.62 22 12 22S14.5 20.88 14.5 19.5C14.5 18.12 13.38 17 12 17C11.87 17 11.74 17 11.61 17.04L10 13.79C10.46 13.34 10.75 12.71 10.75 12S10.46 10.66 10 10.21L11.61 6.96C11.74 7 11.87 7 12 7S12.26 7 12.39 6.96L14 10.21C13.55 10.66 13.25 11.3 13.25 12C13.25 13.38 14.37 14.5 15.75 14.5C15.88 14.5 16 14.5 16.14 14.46L17.77 17.71C17.3 18.16 17 18.8 17 19.5C17 20.88 18.12 22 19.5 22S22 20.88 22 19.5C22 18.12 20.88 17 19.5 17Z" />
+                </svg>
+              </div>
+        
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">AI & ML</h4>
+                <p class="service-item-text">
+                  Designing and deploying machine learning models for forecasting, computer vision, and NLP applications using TensorFlow, Scikit-learn, and Hugging Face Transformers.
+                </p>
+              </div>
+            </li>
+        
+            <li class="service-item">
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
+                  <path d="M6.27 17.05C6.72 17.58 7 18.25 7 19C7 20.66 5.66 22 4 22S1 20.66 1 19 2.34 16 4 16C4.18 16 4.36 16 4.53 16.05L7.6 10.69L5.86 9.7L9.95 8.58L11.07 12.67L9.33 11.68L6.27 17.05M20 16C18.7 16 17.6 16.84 17.18 18H11V16L8 19L11 22V20H17.18C17.6 21.16 18.7 22 20 22C21.66 22 23 20.66 23 19S21.66 16 20 16" />
+                </svg> 
+              </div>
+        
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Data Science & Robotics</h4>
+                <p class="service-item-text">
+                  Combining machine learning with robotics to solve real-world challenges—ranging from autonomous navigation and object detection to data-driven decision-making using computer vision and sensor fusion techniques.
+                </p>
+              </div>
+            </li>
+        
+            <li class="service-item">
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
+                  <path d="M9 17H7V10H9V17M13 17H11V7H13V17M17 17H15V13H17V17M19 19H5V5H19V19.1M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" />
+                </svg>
+              </div>
+        
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Applied AI Research</h4>
+                <p class="service-item-text">
+                  Leading and contributing to real-world AI research in areas like autonomous robotics, semantic search, and labor market analysis. Published in Springer and Elsevier.
+                </p>
+              </div>
+            </li>
+        
+            <li class="service-item">
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
+                  <path d="M22,17H18V10H22M23,8H17A1,1 0 0,0 16,9V19A1,1 0 0,0 17,20H23A1,1 0 0,0 24,19V9A1,1 0 0,0 23,8M4,6H22V4H4A2,2 0 0,0 2,6V17H0V20H14V17H4V6Z" />
+                </svg>       
+              </div>
+        
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Full-Stack Development</h4>
+                <p class="service-item-text">
+                  Developing secure and scalable web applications using React, Flask, and FastAPI. Integrating backend APIs with modern front-end frameworks to build interactive user experiences.
+                </p>
+              </div>
+            </li>
+        
+          </ul>
+        
+        </section>
+        
+
+
+        <!--
+          - testimonials
+        
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+        
+        -->
+
+        <!--
+          - testimonials modal
+        
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              <div data-modal-text>
+                <p>
+                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                  lot of experience
+                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                  consectetur adipiscing
+                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+        -->
+
+        
+
+        <!--
+          - DEVELOPER BADGES
+        -->
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Certificates</h3>
+
+          <ul class="clients-list has-scrollbar">
+            <a href="https://www.credly.com/badges/9ed0ea3c-156a-4d26-b982-62dca5ed46a0/linked_in_profile" target="_blank" class="clients-item">
+              <img src="images/cisco.png" alt="certificate">
+            </a>
+            <a href="https://www.credly.com/badges/5fc13cb2-595a-4ad4-bf22-0f0894389a74/" target="_blank" class="clients-item">
+              <img src="images/aws.png" alt="certificate">
+              <a href="https://drive.google.com/file/d/1yRxHQwfh9FOg0bv0ktsQznLaKBnlDxJl/view" target="_blank" class="clients-item">
+                <img src="images/sql.png" alt="certificate">
+              </a>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+        
+        <a href="https://drive.google.com/file/d/1-8C7y360-uSMjWQw6USsIjcshEEXnrQ8/view?usp=sharing" target="_blank">
+          <ion-icon name="download-outline" id="resume-dwld"></ion-icon>
+        </a>
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Rutgers University</h4>
+
+              <span>2024 — 2026</span>
+
+              <ul class="timeline-text-class">
+                 <li>Masters of Science in Compter Science (3.89/4.00)</li>
+                 <li>Bigdata Algorithm, Software Development, Computer Vision, DBMS, Machine Learning, Explainable AI</li>
+                 
+              </ul>   
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Charusat University</h4>
+
+              <span>2020 — 2024</span>
+
+              <ul class="timeline-text-class">
+                 <li>Bachelor of Technology in Information Technology (9.02/10.00)</li>
+                 <li>Object Oriented Programming, Data Structures, Operating Systems, Design & Analysis, AI, Fullstack Development</li>
+                 
+              </ul>        
+
+            </li>
+
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="bag-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+</div>
+
+<ol class="timeline-list">
+
+  <li class="timeline-item">
+    <h4 class="h4 timeline-item-title">Hyperspectral Agricultural Research Vehicle</h4>
+    <h5 class="h5 timeline-item-title">U.S. Department of Agriculture (USDA), New Jersey, US</h5>
+    <span>May 2025 — Present</span>
+    <ul class="timeline-text">
+      <li>• Automated a previously manually working Farm-ng robot using GPS RTK (1–2 cm accuracy) and depth cameras to
+navigate over 10 acres of cranberry fields.</li>
+      <li>• Built heatmap-based path planning by combining RTK and depth data, improving accuracy by 10% over segmentation
+models.</li>
+      <li>• Achieved 90% autonomous navigation in field tests and reduced manual monitoring by 75%.</li>
+      <li>• Currently integrating a hyperspectral camera to detect plant diseases, count fruits, and support crop maturity analysis.</li>
+    </ul>
+  </li>
+
+  <li class="timeline-item">
+    <h4 class="h4 timeline-item-title">Python Developer</h4>
+    <h5 class="h5 timeline-item-title">Information and Library Network (Govt. of India), Gandhinagar, Gujarat </h5>
+    <span>Dec 2023 — Jul 2024</span>
+    <ul class="timeline-text">
+      <li>• Led a 3-member team to develop AI search algorithms, boosting content retrieval accuracy by 40%.</li>
+      <li>• Conducted in-depth research on NLP models to optimize search performance, and implemented BERT and Sentence
+Transformers, improving multilingual search across 10+ Indian languages.</li>
+      <li>• Pioneered a keyword-free semantic search system, reducing retrieval time by 60% across 50,000+ records.</li>
+      <li>• Published research on multilingual semantic search in Springer and Elsevier. </li>
+    </ul>
+  </li>
+
+  <li class="timeline-item">
+    <h4 class="h4 timeline-item-title">Python Engineer Intern</h4>
+    <h5 class="h5 timeline-item-title">Innovatics, Ahmedabad, Gujarat </h5>
+    <span>Dec 2023 — Jul 2024</span>
+    <ul class="timeline-text">
+      <li>• Developed a computer vision web app using Flask, FastAPI, and Mediapipe, processing 150+ images per minute with
+98% accuracy.</li>
+      <li>• Deployed scalable APIs, optimizing data retrieval and enhancing system integration for 50 real-time requests per minute.</li>
+      <li>• Optimized backend workflows, reducing response time by 40% and enhancing system performance.</li>
+    </ul>
+  </li>
+
+	<li class="timeline-item">
+    <h4 class="h4 timeline-item-title">Database Management Intern</h4>
+    <h5 class="h5 timeline-item-title">Charly Computers, Ahmedabad, Gujarat</h5>
+    <span>May 2022 — July 2022 </span>
+    <ul class="timeline-text">
+      <li>• Developed a visual desktop grocery store application using VB.NET and MySQL with both user and admin interfaces.  </li>
+      <li>• Implemented user-side features for adding, editing, and managing carts and wishlists. </li>
+      <li>• Built an admin dashboard to monitor, manage, and update products in real time.</li>
+    </ul>
+  </li>
+
+</ol>
+
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My Skills</h3>
+
+<ul class="skills-list content-card">
+
+  <li class="skills-item">
+    <div class="title-wrapper">
+      <h5 class="h5">AI - ML</h5>
+      <data value="80">80%</data>
+    </div>
+    <div class="skill-progress-bg">
+      <div class="skill-progress-fill" style="width: 85%;"></div>
+    </div>
+  </li>
+
+  <li class="skills-item">
+    <div class="title-wrapper">
+      <h5 class="h5">Cloud Computing (AWS, GCP, Azure)</h5>
+      <data value="80">70%</data>
+    </div>
+    <div class="skill-progress-bg">
+      <div class="skill-progress-fill" style="width: 80%;"></div>
+    </div>
+  </li>
+
+  <li class="skills-item">
+    <div class="title-wrapper">
+      <h5 class="h5">Applied AI Research</h5>
+      <data value="75">75%</data>
+    </div>
+    <div class="skill-progress-bg">
+      <div class="skill-progress-fill" style="width: 75%;"></div>
+    </div>
+  </li>
+
+  <li class="skills-item">
+    <div class="title-wrapper">
+      <h5 class="h5">Full-Stack Development (Django, React, FastAPI, Flask, Firebase)</h5>
+      <data value="80">75%</data>
+    </div>
+    <div class="skill-progress-bg">
+      <div class="skill-progress-fill" style="width: 80%;"></div>
+    </div>
+  </li>
+
+  <li class="skills-item">
+    <div class="title-wrapper">
+      <h5 class="h5">Python Development</h5>
+      <data value="85">85%</data>
+    </div>
+    <div class="skill-progress-bg">
+      <div class="skill-progress-fill" style="width: 85%;"></div>
+    </div>
+  </li>
+
+  <li class="skills-item">
+    <div class="title-wrapper">
+      <h5 class="h5">Robotics & IOT</h5>
+      <data value="70">70%</data>
+    </div>
+    <div class="skill-progress-bg">
+      <div class="skill-progress-fill" style="width: 70%;"></div>
+    </div>
+  </li>
+
+</ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+<article class="projects" data-page="projects">
+  
+  <header>
+    <h2 class="h2 article-title" style="text-align: left;">Projects</h2>
+  </header>
+
+  <section class="projects">
+
+    <div class="filter-select-box">
+      <button class="filter-select" data-select>
+        <div class="select-value" data-selecct-value>Select category</div>
+        <div class="select-icon">
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </button>
+      <ul class="select-list">
+        <li class="select-item">
+          <button data-select-item>All</button>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="project-list">
+
+      <li class="project-item active" data-filter-item data-category="Full Stack">
+  <div class="card">
+    <h3 class="project-title">
+      <a href="https://github.com/Malav786/pai" target="_blank">
+              WildFace Recognition : Model Inversion Attacks and Defense Mechanisms
+      </a>
+    </h3>
+    <p><strong>Technologies:</strong> PyTorch, Scikit-learn, Poetry, Defend and Attack System, NES, Model Inversion</p>
+    <ul>
+      <li>• Executed black-box model inversion attacks on a CNN trained on 1,288 LFW images using NES and an autoencoder, achieving 98.1% target-class confidence with 100% success.</li>
+      <li>• Designed defenses including top-k filtering, probability rounding, and noise injection to reduce information leakage.</li>
+      <li>• Implemented Isolation Forest query-pattern detection, achieving 100% attack detection (1% FPR) and increasing attack cost 6–7×.</li>
+    </ul>
+    <p><strong>Developed:</strong> Dec 2025</p>
+  </div>
+</li>
+
+<li class="project-item active" data-filter-item data-category="Full Stack">
+  <div class="card">
+    <h3 class="project-title">
+      <a href="https://github.com/Malav786/SecureByBehavior" target="_blank">
+              SecureByBehavior : 
+      </a>
+    </h3>
+    <p><strong>Technologies:</strong> Feature Engineering, Statistical anomaly detection, Isolation Forest method</p>
+    <ul>
+      <li>• Developed a behavior-based authentication system analyzing 2500+ user activity records to identify abnormal login behavior.</li>
+      <li>• Implemented machine-learning anomaly detection models using scikit-learn, improving suspicious activity detection accuracy to ~90%.<li>
+      <li>• Processed and visualized multiple behavioral features (keystrokes, login time, device patterns) to detect potential security threats and reduce false positives.<li>
+    </ul>
+    <p><strong>Developed:</strong> March 2025</p>
+  </div>
+</li>
+
+
+      <li class="project-item active" data-filter-item data-category="Data Analytics">
+        <div class="card p-4 mb-4 shadow rounded">
+          <h3 class="project-title">
+            <a href="https://github.com/namansingh2623/BDA_project" target="_blank">
+              U.S. Labor Market Projections: Pre and Post-Pandemic Analysis
+            </a>
+          </h3>
+          <p><strong>Technologies:</strong> Big Data, Dashboard, Storytelling</p>
+          <ul>
+            <li>• Preprocessed and integrated large datasets from the Bureau of Labor Statistics using pandas and openpyxl, cleaning and merging data for analysis.</li>
+            <li>• Developed an interactive dashboard with Plotly, showcasing 3-D visualizations for trend analysis and storytelling.</li>
+            <li>• Applied machine learning techniques using scikit-learn to analyze labor market changes, focusing on factors like educational attainment, skills requirements, and geographic shifts.</li>
+          </ul>
+          <p><strong>Developed:</strong> Nov 2024</p>
+        </div>
+      </li>
+
+      <li class="project-item active" data-filter-item data-category="Data Science">
+        <div class="card p-4 mb-4 shadow rounded">
+          <h3 class="project-title">
+            <a href="https://github.com/Malav786/Timeseries---Gluonts" target="_blank">
+              Multiple Time Series Forecasting
+            </a>
+          </h3>
+          <p><strong>Technologies:</strong> Python, TensorFlow, Scikit-learn, Time Series Analysis</p>
+          <ul>
+            <li>• Evaluated performance of deep learning and statistical forecasting models across diverse datasets.</li>
+            <li>• Achieved optimal results with the N-BEATS model, attaining a minimum Mean Absolute Percentage Error (MAPE) of 0.18.</li>
+            <li>• Published a research paper detailing the project's methodology, model comparisons, and key findings.</li>
+          </ul>
+          <p><strong>Developed:</strong> Apr 2023</p>
+        </div>
+      </li>
+
+      <li class="project-item active" data-filter-item data-category="Machine Learning">
+        <div class="card p-4 mb-4 shadow rounded">
+          <h3 class="project-title">
+            <a href="https://github.com/Malav786/Glassdoor" target="_blank">
+              Glassdoor
+            </a>
+          </h3>
+          <p><strong>Technologies:</strong> Web Scraping, Predictive Modeling, Data Analysis</p>
+          <ul>
+            <li>• Comprehensive project lifecycle from data collection to model deployment.</li>
+            <li>• Obtained dataset through web scraping, then cleaned and preprocessed to remove 5% of data and manage outliers.</li>
+            <li>• Trained various ML models on cleaned dataset, achieving 89.9% accuracy in predicting future and missing values.</li>
+            <li>• End-to-end data science project covers all stages from sourcing to deployment.</li>
+          </ul>
+          <p><strong>Developed:</strong> Nov 2022</p>
+        </div>
+      </li>
+
+      <li class="project-item active" data-filter-item data-category="Web Development">
+  <div class="card">
+    <h3 class="project-title">
+      <a href="https://github.com/Malav786/Django_Ecomm" target="_blank">
+              Django E-Commerce Website Development
+      </a>
+      
+    </h3>
+    <p><strong>Technologies:</strong> Big Data, Dashboard, Storytelling</p>
+    <ul>
+      <li>Developed a scalable backend using Django and PostgreSQL, implementing a RESTful API for dynamic product management and user authentication.</li>
+      <li>Designed a responsive frontend with HTML, Js, and Bootstrap, ensuring seamless cross-device compatibility.</li>
+      <li>Deployed the application on Heroku, utilizing Docker for containerization and CI/CD pipelines for automated testing and deployment.</li>
+    </ul>
+    <p><strong>Developed:</strong> Jan 2024</p>
+  </div>
+</li>
+
+<li class="project-item active" data-filter-item data-category="Full Stack">
+  <div class="card">
+    <h3 class="project-title">
+      <a href="https://github.com/MarlontheWizard/Park_Company_Parking_App" target="_blank">
+              Car Parking Platform Development
+      </a>
+    </h3>
+    <p><strong>Technologies:</strong> PHP Development, Docker, Stripe integration</p>
+    <ul>
+      <li>Developed a car parking platform using PHP, MySQL, and Docker, enabling real-time parking availability updates across 5+ locations.</li>
+      <li>Integrated Stripe payment gateway, processing over 100 transactions/month, for secure and seamless payments.</li>
+      <li>Implemented automated testing and optimized user experience with a mobile-responsive design, reducing load time by 30% for enhanced user engagement.</li>
+    </ul>
+    <p><strong>Developed:</strong> Mar 2024</p>
+  </div>
+</li>
+
+
+    </ul>
+
+  </section>
+</article>
+
+
+
+
+      <!--
+        - #BLOG
+      
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+
+                  <p class="blog-text">
+                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+
+                  <p class="blog-text">
+                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #80</h3>
+
+                  <p class="blog-text">
+                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
+
+                  <p class="blog-text">
+                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
+
+                  <p class="blog-text">
+                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #79</h3>
+
+                  <p class="blog-text">
+                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      -->
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.6818412241796!2d-75.12431162401214!3d39.94840517151875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8f118887d7d%3A0xc137b19be6bb607f!2sRutgers%20University%E2%80%93Camden!5e1!3m2!1sen!2sus!4v1739157268960!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="https://formsubmit.co/01782fd54dd8cceb24efb96b57668831" method="POST">
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <!--
+    - custom js link
+  -->
+  <script src="script.js" defer></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
