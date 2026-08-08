@@ -1,1219 +1,1529 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malav's Personal Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malav Champaneria - AI & ML Portfolio</title>
 
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="images/image.png" type="image/x-icon">
+  <!-- ===== FIX #8: SEO & Social Sharing Meta Tags ===== -->
+  <meta name="description"
+    content="Portfolio of Malav Champaneria — AI & Machine Learning Engineer. MS Computer Science at Rutgers University. Autonomous robotics at USDA, multilingual semantic search for Govt. of India, and published AI research." />
+  <meta name="author" content="Malav Champaneria" />
+  <meta name="keywords"
+    content="Malav Champaneria, AI Engineer, Machine Learning, Robotics, Computer Vision, Rutgers, USDA, Portfolio" />
 
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Open Graph (LinkedIn, Facebook) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Malav Champaneria - AI & ML Portfolio" />
+  <meta property="og:description"
+    content="AI & Machine Learning Engineer building autonomous robots, semantic search engines, and deep learning systems. Explore my Minecraft-themed portfolio!" />
+  <meta property="og:image" content="images/A1.jpg" />
+  <meta property="og:url" content="https://malav786.github.io/" />
 
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    .projects {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Malav Champaneria - AI & ML Portfolio" />
+  <meta name="twitter:description"
+    content="AI & Machine Learning Engineer building autonomous robots, semantic search engines, and deep learning systems." />
+  <meta name="twitter:image" content="images/A1.jpg" />
 
-.projects .article-title {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #333;
-}
+  <!-- ===== FIX #1: Dedicated favicon file ===== -->
+  <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" />
 
-.projects .filter-list {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0;
-  margin-bottom: 1.5rem;
-}
-
-.projects .filter-item button {
-  padding: 8px 16px;
-  font-size: 1rem;
-  border: none;
-  background-color: #0077ff;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.projects .filter-item button.active {
-  background-color: #005bb5;
-}
-
-.projects .filter-select-box {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.projects .filter-select {
-  background-color: #eee;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.projects .select-icon ion-icon {
-  font-size: 1.2rem;
-}
-
-.projects .select-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-}
-
-.projects .select-item button {
-  background: none;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-/* Scoped Card Grid */
-.projects .project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  padding: 0;
-  list-style: none;
-}
-
-.projects .project-item .card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.projects .project-item .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-.projects .project-title a {
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-
-.projects .project-title a:hover {
-  color: #0077ff;
-  text-decoration: underline;
-}
-
-.projects .project-item p {
-  font-size: 0.95rem;
-  color: #444;
-}
-
-.projects .project-item ul {
-  padding-left: 1.2rem;
-  list-style-type: disc;
-  color: #333;
-  font-size: 0.92rem;
-}
-
-.projects .project-item ul li {
-  margin-bottom: 0.5rem;
-}
-
-.projects strong {
-  color: #000;
-}
-
-  </style>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!--
-    - #MAIN
-  -->
+  <!-- Sky Layer (color is driven by the current biome) -->
+  <div class="sky-layer" id="sky-layer"></div>
 
-  <main>
+  <!-- Floating Clouds Background -->
+  <div class="clouds-container">
+    <div class="cloud cloud-1">
+      <svg viewBox="0 0 100 50" fill="white">
+        <path
+          d="M10 25 Q15 15 25 20 Q35 10 45 20 Q55 15 65 20 Q75 10 85 20 Q90 25 85 30 Q75 40 65 35 Q55 40 45 35 Q35 40 25 35 Q15 40 10 30 Q5 25 10 25 Z" />
+      </svg>
+    </div>
+    <div class="cloud cloud-2">
+      <svg viewBox="0 0 100 50" fill="white">
+        <path
+          d="M10 25 Q15 15 25 20 Q35 10 45 20 Q55 15 65 20 Q75 10 85 20 Q90 25 85 30 Q75 40 65 35 Q55 40 45 35 Q35 40 25 35 Q15 40 10 30 Q5 25 10 25 Z" />
+      </svg>
+    </div>
+    <div class="cloud cloud-3">
+      <svg viewBox="0 0 100 50" fill="white">
+        <path
+          d="M10 25 Q15 15 25 20 Q35 10 45 20 Q55 15 65 20 Q75 10 85 20 Q90 25 85 30 Q75 40 65 35 Q55 40 45 35 Q35 40 25 35 Q15 40 10 30 Q5 25 10 25 Z" />
+      </svg>
+    </div>
+    <div class="cloud cloud-4">
+      <svg viewBox="0 0 100 50" fill="white">
+        <path
+          d="M10 25 Q15 15 25 20 Q35 10 45 20 Q55 15 65 20 Q75 10 85 20 Q90 25 85 30 Q75 40 65 35 Q55 40 45 35 Q35 40 25 35 Q15 40 10 30 Q5 25 10 25 Z" />
+      </svg>
+    </div>
+    <div class="cloud cloud-5">
+      <svg viewBox="0 0 100 50" fill="white">
+        <path
+          d="M10 25 Q15 15 25 20 Q35 10 45 20 Q55 15 65 20 Q75 10 85 20 Q90 25 85 30 Q75 40 65 35 Q55 40 45 35 Q35 40 25 35 Q15 40 10 30 Q5 25 10 25 Z" />
+      </svg>
+    </div>
+  </div>
 
-    <!--
-      - #SIDEBAR
-    -->
+  <!-- Minecraft Blocky Horizon & Terrain Layer -->
+  <div class="terrain-layer" id="terrain-layer">
+    <svg class="terrain-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <!-- Dirt / Base Layer -->
+      <path class="terrain-dirt"
+        d="M0 60 H40 V40 H80 V60 H140 V35 H200 V50 H280 V30 H360 V55 H440 V25 H520 V45 H600 V30 H680 V50 H760 V35 H840 V55 H920 V30 H1000 V50 H1080 V40 H1140 V60 H1200 V120 H0 Z" />
+      <!-- Blocky Grass Top -->
+      <path class="terrain-grass"
+        d="M0 60 H40 V40 H80 V60 H140 V35 H200 V50 H280 V30 H360 V55 H440 V25 H520 V45 H600 V30 H680 V50 H760 V35 H840 V55 H920 V30 H1000 V50 H1080 V40 H1140 V60 H1200 V68 H1140 V48 H1080 V58 H1000 V38 H920 V63 H840 V43 H760 V58 H680 V38 H600 V53 H520 V33 H440 V63 H360 V38 H280 V58 H200 V43 H140 V68 H80 V48 H40 V68 H0 Z" />
+      <!-- Blocky Oak Trees -->
+      <rect class="terrain-wood" x="160" y="15" width="8" height="20" />
+      <rect class="terrain-leaves" x="148" y="-5" width="32" height="20" />
+      <rect class="terrain-wood" x="480" y="5" width="8" height="20" />
+      <rect class="terrain-leaves" x="468" y="-15" width="32" height="20" />
+      <rect class="terrain-wood" x="800" y="15" width="8" height="20" />
+      <rect class="terrain-leaves" x="788" y="-5" width="32" height="20" />
+    </svg>
+  </div>
 
-    <aside class="sidebar" data-sidebar>
+  <!-- Ambient Interactive Minecraft Particles Canvas -->
+  <canvas id="ambient-particles-canvas"></canvas>
 
-      <div class="sidebar-info">
+  <!-- Header Controls Group (Crafting + Skin + Biome + Sound) -->
+  <div class="header-controls">
+    <!-- Crafting Table Modal Toggle -->
+    <button class="control-btn" id="crafting-switch" onclick="openCraftingModal()" aria-label="Open Crafting Table"
+      title="Crafting Table (E)">
+      <span class="control-icon">🛠️</span>
+      <span class="control-tooltip pixel-text">Crafting Table (E)</span>
+    </button>
 
-        <figure class="avatar-box">
-          <img src="images/image.png" alt="Malav Champaneria">
-	</figure>
+    <!-- Skin Customizer -->
+    <button class="control-btn" id="skin-switch" aria-label="Change Guide Skin" title="Change Guide Outfit">
+      <span class="control-icon" id="skin-icon">👕</span>
+      <span class="control-tooltip pixel-text">Skin: Steve</span>
+    </button>
 
-        <div class="info-content">
-          <h1 class="name" title="Malav Champaneria">Malav Champaneria</h1>
+    <!-- Biome Switcher -->
+    <button class="control-btn" id="biome-switch" aria-label="Change Biome" title="Change Minecraft Biome">
+      <span class="control-icon" id="biome-icon">🌲</span>
+      <span class="control-tooltip pixel-text">Biome: Plains</span>
+    </button>
 
-          <p class="title">Computer Science Engineer</p>
-        </div>
+    <!-- Audio Toggle -->
+    <button class="control-btn" id="audio-toggle" aria-label="Toggle Sound Effects" title="Toggle 8-Bit Audio">
+      <span class="control-icon" id="audio-icon">🔇</span>
+      <span class="control-tooltip pixel-text">Sound: OFF</span>
+    </button>
+  </div>
 
-        <ion-icon name="moon-outline" id="icon"></ion-icon>
-        
-        <button class="info_more-btn" data-sidebar-btn>
-            <span>Show Contacts</span>
+  <!-- Interactive Minecraft Mining Diamond Ore Widget -->
+  <div class="mining-block-widget" id="mining-block-widget" aria-label="Interactive Diamond Ore block">
+    <div class="ore-block" id="ore-block">
+      <div class="ore-crack" id="ore-crack"></div>
+      <div class="ore-gem">💎</div>
+    </div>
+    <div class="ore-label pixel-text" id="ore-label">Mine Me! (0/5)</div>
+  </div>
 
-            <ion-icon name="chevron-down"></ion-icon>
-        </button>
+  <!-- ================= MINECRAFT HOTBAR NAVIGATION ================= -->
+  <nav class="hotbar" id="hotbar" aria-label="Site navigation hotbar">
+    <button class="hotbar-slot active" data-nav="home" onclick="hotbarNav('home')" aria-label="Home">
+      <span class="hotbar-icon">🏠</span>
+      <span class="hotbar-key">1</span>
+      <span class="hotbar-tooltip pixel-text">Home</span>
+    </button>
+    <button class="hotbar-slot" data-nav="about" onclick="hotbarNav('about')" aria-label="About">
+      <span class="hotbar-icon">🧑‍💻</span>
+      <span class="hotbar-key">2</span>
+      <span class="hotbar-tooltip pixel-text">About</span>
+    </button>
+    <button class="hotbar-slot" data-nav="skills" onclick="hotbarNav('skills')" aria-label="Skills">
+      <span class="hotbar-icon">⚒️</span>
+      <span class="hotbar-key">3</span>
+      <span class="hotbar-tooltip pixel-text">Skills</span>
+    </button>
+    <button class="hotbar-slot" data-nav="projects" onclick="hotbarNav('projects')" aria-label="Projects">
+      <span class="hotbar-icon">⛏️</span>
+      <span class="hotbar-key">4</span>
+      <span class="hotbar-tooltip pixel-text">Projects</span>
+    </button>
+    <button class="hotbar-slot" data-nav="experience" onclick="hotbarNav('experience')" aria-label="Experience">
+      <span class="hotbar-icon">💼</span>
+      <span class="hotbar-key">5</span>
+      <span class="hotbar-tooltip pixel-text">Experience</span>
+    </button>
+    <button class="hotbar-slot" data-nav="publications" onclick="hotbarNav('publications')" aria-label="Publications">
+      <span class="hotbar-icon">📚</span>
+      <span class="hotbar-key">6</span>
+      <span class="hotbar-tooltip pixel-text">Publications</span>
+    </button>
+    <button class="hotbar-slot" data-nav="achievements" onclick="hotbarNav('achievements')" aria-label="Achievements">
+      <span class="hotbar-icon">🏆</span>
+      <span class="hotbar-key">7</span>
+      <span class="hotbar-tooltip pixel-text">Achievements</span>
+    </button>
+    <button class="hotbar-slot" data-nav="contact" onclick="hotbarNav('contact')" aria-label="Contact">
+      <span class="hotbar-icon">📬</span>
+      <span class="hotbar-key">8</span>
+      <span class="hotbar-tooltip pixel-text">Contact</span>
+    </button>
+  </nav>
 
+  <!-- ================= PAGE TRANSITION (block wipe + guide) ================= -->
+  <div class="transition-overlay" id="transition-overlay" aria-hidden="true">
+    <!-- Grid of blocks that build in / break away -->
+    <div class="transition-blocks" id="transition-blocks"></div>
 
+    <!-- The guide who leads you to the next area -->
+    <div class="guide-stage" id="guide-stage">
+      <div class="guide-bubble pixel-text" id="guide-bubble"></div>
+
+      <div class="guide-character" id="guide-character">
+        <!-- Held item (swaps per destination) -->
+        <span class="guide-item" id="guide-item">⛏️</span>
+
+        <!-- Original blocky pixel guide. Parts are classed so each biome can reskin him. -->
+        <svg class="guide-svg" viewBox="0 0 32 44" shape-rendering="crispEdges" aria-hidden="true">
+          <!-- elytra / cape (hidden unless a biome enables it) -->
+          <g class="g-cape">
+            <rect class="g-cape-main" x="5" y="15" width="4" height="14" fill="#6D5BA6" />
+            <rect class="g-cape-main" x="23" y="15" width="4" height="14" fill="#6D5BA6" />
+            <rect class="g-cape-edge" x="5" y="27" width="4" height="3" fill="#4A3D75" />
+            <rect class="g-cape-edge" x="23" y="27" width="4" height="3" fill="#4A3D75" />
+          </g>
+          <!-- back arm -->
+          <g class="guide-arm-back">
+            <rect class="g-shirt-dark" x="4" y="15" width="5" height="13" fill="#2E7D6B" />
+            <rect class="g-skin-dark" x="4" y="26" width="5" height="4" fill="#C99A6B" />
+          </g>
+          <!-- legs -->
+          <g class="guide-leg-l">
+            <rect class="g-pants" x="10" y="30" width="5" height="10" fill="#3B4A6B" />
+            <rect class="g-shoes" x="10" y="39" width="5" height="4" fill="#4A3728" />
+          </g>
+          <g class="guide-leg-r">
+            <rect class="g-pants-dark" x="17" y="30" width="5" height="10" fill="#33405C" />
+            <rect class="g-shoes-dark" x="17" y="39" width="5" height="4" fill="#3E2E22" />
+          </g>
+          <!-- body -->
+          <rect class="g-shirt" x="9" y="15" width="14" height="15" fill="#38927D" />
+          <rect class="g-shirt-dark" x="9" y="15" width="14" height="3" fill="#2E7D6B" />
+          <!-- head -->
+          <rect class="g-skin" x="8" y="2" width="16" height="14" fill="#D9A878" />
+          <rect class="g-hair" x="8" y="2" width="16" height="4" fill="#5A3A22" />
+          <rect class="g-hair" x="8" y="6" width="3" height="3" fill="#5A3A22" />
+          <rect class="g-hair" x="21" y="6" width="3" height="3" fill="#5A3A22" />
+          <!-- eyes -->
+          <rect class="g-eye-white" x="12" y="8" width="3" height="3" fill="#FFFFFF" />
+          <rect class="g-eye" x="13" y="8" width="2" height="3" fill="#2B4C7E" />
+          <rect class="g-eye-white" x="18" y="8" width="3" height="3" fill="#FFFFFF" />
+          <rect class="g-eye" x="18" y="8" width="2" height="3" fill="#2B4C7E" />
+          <!-- mouth -->
+          <rect class="g-mouth" x="14" y="13" width="4" height="1" fill="#8A5A3B" />
+          <!-- front arm (raises to present the item) -->
+          <g class="guide-arm-front">
+            <rect class="g-shirt" x="22" y="15" width="5" height="13" fill="#38927D" />
+            <rect class="g-skin" x="22" y="26" width="5" height="4" fill="#D9A878" />
+          </g>
+        </svg>
       </div>
 
-      <div class="sidebar-info_more">
+      <!-- Burst particles at the reveal beat -->
+      <div class="guide-particles" id="guide-particles"></div>
+    </div>
+  </div>
 
-        <div class="separator"></div>
+  <!-- Idle wanderer: the guide strolls past if you linger on the home screen -->
+  <div class="idle-guide" id="idle-guide" aria-hidden="true"></div>
 
-        <ul class="contacts-list">
+  <!-- ================= ADVANCEMENT TOASTS ================= -->
+  <div class="advancement-container" id="advancement-container" aria-live="polite"></div>
 
-          <li class="contact-item">
+  <!-- Autoloading Screen -->
+  <div class="loader-screen" id="loader-screen">
+    <div class="loader-blocks">
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+      <div class="loader-block"></div>
+    </div>
+    <div class="loader-bar-container">
+      <div class="loader-bar-fill" id="loader-bar-fill"></div>
+    </div>
+    <p class="loader-tip pixel-text" style="color: #825432;">💡 Tip: Press SPACE to mine faster!</p>
+  </div>
 
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+  <!-- Home View (/) -->
+  <main class="home-view" id="home-view">
+    <!-- Floating Avatar (FIX #1: dedicated avatar file) -->
+    <div class="floating-avatar">
+      <img src="images/image.png" alt="Malav Champaneria" />
+    </div>
 
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
+    <!-- Home Menu & Text -->
+    <div class="home-container">
+      <div class="tag-badge pixel-text">⛏️ Hi there! I'm</div>
+      <h1 class="home-title pixel-text stroke-title">Malav Champaneria</h1>
 
-              <a href="mailto: mchamp.2509@gmail.com" class="contact-link">mchamp2509@gmail.com</a>
-            </div>
+      <div class="typing-container pixel-text" id="typing-sub"></div>
 
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+18568319928" class="contact-link">+1 856-831-9928</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="2002-05-01">Aug 10, 2002</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>New Jersey, USA</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-    <!--
-      - #SOCIALS
-    -->
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="http://linkedin.com/in/malav-champaneria" target="_blank">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://github.com/Malav786" target="_blank">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://malav786.github.io/" target="_blank">
-              <ion-icon name="code-slash"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
+      <div class="menu-buttons">
+        <button class="btn" onclick="openPage('about')">About Me</button>
+        <button class="btn" onclick="openPage('skills')">My Skills</button>
+        <button class="btn" onclick="openPage('projects')">Projects</button>
+        <button class="btn" onclick="openPage('experience')">Experience</button>
+        <button class="btn" onclick="openPage('achievements')">Achievements</button>
+        <button class="btn" onclick="openPage('publications')">Publications</button>
+        <!-- FIX #5: Contact page entry -->
+        <button class="btn" onclick="openPage('contact')">Contact</button>
       </div>
 
-    </aside>
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Projects</button>
-          </li>
-
-          <!--
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-        -->
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-        <section class="about-text">
-          <p>
-            <b>Artificial Intelligence and Machine Learning Engineer</b>
-          </p>
-        
-          <p>
-            With a strong foundation in Artificial Intelligence and Machine Learning, I specialize in developing intelligent systems for real-world applications, ranging from autonomous robotics and semantic search to time series forecasting and computer vision. My work blends deep learning, NLP, and data analysis to solve complex problems in diverse domains.
-          </p>
-        
-          <p>
-            I have hands-on experience with tools and frameworks like TensorFlow, Scikit-learn, BERT, and Sentence Transformers, and have deployed AI models in scalable environments using Flask, FastAPI, and Streamlit. My research has contributed to advanced autonomous navigation systems, multilingual semantic search, and labor market analytics, with multiple publications in Springer and Elsevier.
-          </p>
-        
-          <p>
-            Currently pursuing a Master’s in Computer Science at Rutgers University, I’m driven by a passion for applied AI—integrating data-driven methods and machine learning to build efficient, innovative, and impactful solutions.
-          </p>
-        </section>
-        
-
-        <!--
-          - service
-        -->
-        <section class="service">
-
-          <h3 class="h3 service-title">What I'm Doing</h3>
-        
-          <ul class="service-list">
-        
-            <li class="service-item">
-              <div class="service-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
-                  <path d="M19.5 17C19.37 17 19.24 17 19.11 17.04L17.5 13.79C17.95 13.34 18.25 12.71 18.25 12C18.25 10.62 17.13 9.5 15.75 9.5C15.62 9.5 15.5 9.5 15.36 9.54L13.73 6.29C14.21 5.84 14.5 5.21 14.5 4.5C14.5 3.12 13.38 2 12 2S9.5 3.12 9.5 4.5C9.5 5.21 9.79 5.84 10.26 6.29L8.64 9.54C8.5 9.5 8.38 9.5 8.25 9.5C6.87 9.5 5.75 10.62 5.75 12C5.75 12.71 6.05 13.34 6.5 13.79L4.89 17.04C4.76 17 4.63 17 4.5 17C3.12 17 2 18.12 2 19.5C2 20.88 3.12 22 4.5 22S7 20.88 7 19.5C7 18.8 6.71 18.16 6.24 17.71L7.86 14.46C8 14.5 8.12 14.5 8.25 14.5C8.38 14.5 8.5 14.5 8.64 14.46L10.27 17.71C9.8 18.16 9.5 18.8 9.5 19.5C9.5 20.88 10.62 22 12 22S14.5 20.88 14.5 19.5C14.5 18.12 13.38 17 12 17C11.87 17 11.74 17 11.61 17.04L10 13.79C10.46 13.34 10.75 12.71 10.75 12S10.46 10.66 10 10.21L11.61 6.96C11.74 7 11.87 7 12 7S12.26 7 12.39 6.96L14 10.21C13.55 10.66 13.25 11.3 13.25 12C13.25 13.38 14.37 14.5 15.75 14.5C15.88 14.5 16 14.5 16.14 14.46L17.77 17.71C17.3 18.16 17 18.8 17 19.5C17 20.88 18.12 22 19.5 22S22 20.88 22 19.5C22 18.12 20.88 17 19.5 17Z" />
-                </svg>
-              </div>
-        
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">AI & ML</h4>
-                <p class="service-item-text">
-                  Designing and deploying machine learning models for forecasting, computer vision, and NLP applications using TensorFlow, Scikit-learn, and Hugging Face Transformers.
-                </p>
-              </div>
-            </li>
-        
-            <li class="service-item">
-              <div class="service-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
-                  <path d="M6.27 17.05C6.72 17.58 7 18.25 7 19C7 20.66 5.66 22 4 22S1 20.66 1 19 2.34 16 4 16C4.18 16 4.36 16 4.53 16.05L7.6 10.69L5.86 9.7L9.95 8.58L11.07 12.67L9.33 11.68L6.27 17.05M20 16C18.7 16 17.6 16.84 17.18 18H11V16L8 19L11 22V20H17.18C17.6 21.16 18.7 22 20 22C21.66 22 23 20.66 23 19S21.66 16 20 16" />
-                </svg> 
-              </div>
-        
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Data Science & Robotics</h4>
-                <p class="service-item-text">
-                  Combining machine learning with robotics to solve real-world challenges—ranging from autonomous navigation and object detection to data-driven decision-making using computer vision and sensor fusion techniques.
-                </p>
-              </div>
-            </li>
-        
-            <li class="service-item">
-              <div class="service-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
-                  <path d="M9 17H7V10H9V17M13 17H11V7H13V17M17 17H15V13H17V17M19 19H5V5H19V19.1M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" />
-                </svg>
-              </div>
-        
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Applied AI Research</h4>
-                <p class="service-item-text">
-                  Leading and contributing to real-world AI research in areas like autonomous robotics, semantic search, and labor market analysis. Published in Springer and Elsevier.
-                </p>
-              </div>
-            </li>
-        
-            <li class="service-item">
-              <div class="service-icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45">
-                  <path d="M22,17H18V10H22M23,8H17A1,1 0 0,0 16,9V19A1,1 0 0,0 17,20H23A1,1 0 0,0 24,19V9A1,1 0 0,0 23,8M4,6H22V4H4A2,2 0 0,0 2,6V17H0V20H14V17H4V6Z" />
-                </svg>       
-              </div>
-        
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Full-Stack Development</h4>
-                <p class="service-item-text">
-                  Developing secure and scalable web applications using React, Flask, and FastAPI. Integrating backend APIs with modern front-end frameworks to build interactive user experiences.
-                </p>
-              </div>
-            </li>
-        
-          </ul>
-        
-        </section>
-        
-
-
-        <!--
-          - testimonials
-        
-
-        <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-        
-        -->
-
-        <!--
-          - testimonials modal
-        
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-        </div>
-
-        -->
-
-        
-
-        <!--
-          - DEVELOPER BADGES
-        -->
-
-        <section class="clients">
-
-          <h3 class="h3 clients-title">Certificates</h3>
-
-          <ul class="clients-list has-scrollbar">
-            <a href="https://www.credly.com/badges/9ed0ea3c-156a-4d26-b982-62dca5ed46a0/linked_in_profile" target="_blank" class="clients-item">
-              <img src="images/cisco.png" alt="certificate">
-            </a>
-            <a href="https://www.credly.com/badges/5fc13cb2-595a-4ad4-bf22-0f0894389a74/" target="_blank" class="clients-item">
-              <img src="images/aws.png" alt="certificate">
-              <a href="https://drive.google.com/file/d/1yRxHQwfh9FOg0bv0ktsQznLaKBnlDxJl/view" target="_blank" class="clients-item">
-                <img src="images/sql.png" alt="certificate">
-              </a>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-        
-        <a href="https://drive.google.com/file/d/1-8C7y360-uSMjWQw6USsIjcshEEXnrQ8/view?usp=sharing" target="_blank">
-          <ion-icon name="download-outline" id="resume-dwld"></ion-icon>
-        </a>
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Rutgers University</h4>
-
-              <span>2024 — 2026</span>
-
-              <ul class="timeline-text-class">
-                 <li>Masters of Science in Compter Science (3.89/4.00)</li>
-                 <li>Bigdata Algorithm, Software Development, Computer Vision, DBMS, Machine Learning, Explainable AI</li>
-                 
-              </ul>   
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Charusat University</h4>
-
-              <span>2020 — 2024</span>
-
-              <ul class="timeline-text-class">
-                 <li>Bachelor of Technology in Information Technology (9.02/10.00)</li>
-                 <li>Object Oriented Programming, Data Structures, Operating Systems, Design & Analysis, AI, Fullstack Development</li>
-                 
-              </ul>        
-
-            </li>
-
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="bag-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
-</div>
-
-<ol class="timeline-list">
-
-  <li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Hyperspectral Agricultural Research Vehicle</h4>
-    <h5 class="h5 timeline-item-title">U.S. Department of Agriculture (USDA), New Jersey, US</h5>
-    <span>May 2025 — Present</span>
-    <ul class="timeline-text">
-      <li>• Automated a previously manually working Farm-ng robot using GPS RTK (1–2 cm accuracy) and depth cameras to
-navigate over 10 acres of cranberry fields.</li>
-      <li>• Built heatmap-based path planning by combining RTK and depth data, improving accuracy by 10% over segmentation
-models.</li>
-      <li>• Achieved 90% autonomous navigation in field tests and reduced manual monitoring by 75%.</li>
-      <li>• Currently integrating a hyperspectral camera to detect plant diseases, count fruits, and support crop maturity analysis.</li>
-    </ul>
-  </li>
-
-  <li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Python Developer</h4>
-    <h5 class="h5 timeline-item-title">Information and Library Network (Govt. of India), Gandhinagar, Gujarat </h5>
-    <span>Dec 2023 — Jul 2024</span>
-    <ul class="timeline-text">
-      <li>• Led a 3-member team to develop AI search algorithms, boosting content retrieval accuracy by 40%.</li>
-      <li>• Conducted in-depth research on NLP models to optimize search performance, and implemented BERT and Sentence
-Transformers, improving multilingual search across 10+ Indian languages.</li>
-      <li>• Pioneered a keyword-free semantic search system, reducing retrieval time by 60% across 50,000+ records.</li>
-      <li>• Published research on multilingual semantic search in Springer and Elsevier. </li>
-    </ul>
-  </li>
-
-  <li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Python Engineer Intern</h4>
-    <h5 class="h5 timeline-item-title">Innovatics, Ahmedabad, Gujarat </h5>
-    <span>Dec 2023 — Jul 2024</span>
-    <ul class="timeline-text">
-      <li>• Developed a computer vision web app using Flask, FastAPI, and Mediapipe, processing 150+ images per minute with
-98% accuracy.</li>
-      <li>• Deployed scalable APIs, optimizing data retrieval and enhancing system integration for 50 real-time requests per minute.</li>
-      <li>• Optimized backend workflows, reducing response time by 40% and enhancing system performance.</li>
-    </ul>
-  </li>
-
-	<li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Database Management Intern</h4>
-    <h5 class="h5 timeline-item-title">Charly Computers, Ahmedabad, Gujarat</h5>
-    <span>May 2022 — July 2022 </span>
-    <ul class="timeline-text">
-      <li>• Developed a visual desktop grocery store application using VB.NET and MySQL with both user and admin interfaces.  </li>
-      <li>• Implemented user-side features for adding, editing, and managing carts and wishlists. </li>
-      <li>• Built an admin dashboard to monitor, manage, and update products in real time.</li>
-    </ul>
-  </li>
-
-</ol>
-
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My Skills</h3>
-
-<ul class="skills-list content-card">
-
-  <li class="skills-item">
-    <div class="title-wrapper">
-      <h5 class="h5">AI - ML</h5>
-      <data value="80">80%</data>
+      <!-- FIX #6: Resume download button (front and center) -->
+      <div class="resume-download-wrapper">
+        <a href="assets/MalavChampaneria_Resume.pdf" download="MalavChampaneria_Resume.pdf" class="btn btn-resume">📜
+          Download Resume</a>
+      </div>
+
+      <!-- Rotating splash line (click for a new one) -->
+      <div class="splash-text pixel-text" id="splash-text" title="Click me!"></div>
     </div>
-    <div class="skill-progress-bg">
-      <div class="skill-progress-fill" style="width: 85%;"></div>
-    </div>
-  </li>
-
-  <li class="skills-item">
-    <div class="title-wrapper">
-      <h5 class="h5">Cloud Computing (AWS, GCP, Azure)</h5>
-      <data value="80">70%</data>
-    </div>
-    <div class="skill-progress-bg">
-      <div class="skill-progress-fill" style="width: 80%;"></div>
-    </div>
-  </li>
-
-  <li class="skills-item">
-    <div class="title-wrapper">
-      <h5 class="h5">Applied AI Research</h5>
-      <data value="75">75%</data>
-    </div>
-    <div class="skill-progress-bg">
-      <div class="skill-progress-fill" style="width: 75%;"></div>
-    </div>
-  </li>
-
-  <li class="skills-item">
-    <div class="title-wrapper">
-      <h5 class="h5">Full-Stack Development (Django, React, FastAPI, Flask, Firebase)</h5>
-      <data value="80">75%</data>
-    </div>
-    <div class="skill-progress-bg">
-      <div class="skill-progress-fill" style="width: 80%;"></div>
-    </div>
-  </li>
-
-  <li class="skills-item">
-    <div class="title-wrapper">
-      <h5 class="h5">Python Development</h5>
-      <data value="85">85%</data>
-    </div>
-    <div class="skill-progress-bg">
-      <div class="skill-progress-fill" style="width: 85%;"></div>
-    </div>
-  </li>
-
-  <li class="skills-item">
-    <div class="title-wrapper">
-      <h5 class="h5">Robotics & IOT</h5>
-      <data value="70">70%</data>
-    </div>
-    <div class="skill-progress-bg">
-      <div class="skill-progress-fill" style="width: 70%;"></div>
-    </div>
-  </li>
-
-</ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-<article class="projects" data-page="projects">
-  
-  <header>
-    <h2 class="h2 article-title" style="text-align: left;">Projects</h2>
-  </header>
-
-  <section class="projects">
-
-    <div class="filter-select-box">
-      <button class="filter-select" data-select>
-        <div class="select-value" data-selecct-value>Select category</div>
-        <div class="select-icon">
-          <ion-icon name="chevron-down"></ion-icon>
-        </div>
-      </button>
-      <ul class="select-list">
-        <li class="select-item">
-          <button data-select-item>All</button>
-        </li>
-      </ul>
-    </div>
-
-    <ul class="project-list">
-
-      <li class="project-item active" data-filter-item data-category="Full Stack">
-  <div class="card">
-    <h3 class="project-title">
-      <a href="https://github.com/Malav786/pai" target="_blank">
-              WildFace Recognition : Model Inversion Attacks and Defense Mechanisms
-      </a>
-    </h3>
-    <p><strong>Technologies:</strong> PyTorch, Scikit-learn, Poetry, Defend and Attack System, NES, Model Inversion</p>
-    <ul>
-      <li>• Executed black-box model inversion attacks on a CNN trained on 1,288 LFW images using NES and an autoencoder, achieving 98.1% target-class confidence with 100% success.</li>
-      <li>• Designed defenses including top-k filtering, probability rounding, and noise injection to reduce information leakage.</li>
-      <li>• Implemented Isolation Forest query-pattern detection, achieving 100% attack detection (1% FPR) and increasing attack cost 6–7×.</li>
-    </ul>
-    <p><strong>Developed:</strong> Dec 2025</p>
-  </div>
-</li>
-
-<li class="project-item active" data-filter-item data-category="Full Stack">
-  <div class="card">
-    <h3 class="project-title">
-      <a href="https://github.com/Malav786/SecureByBehavior" target="_blank">
-              SecureByBehavior : 
-      </a>
-    </h3>
-    <p><strong>Technologies:</strong> Feature Engineering, Statistical anomaly detection, Isolation Forest method</p>
-    <ul>
-      <li>• Developed a behavior-based authentication system analyzing 2500+ user activity records to identify abnormal login behavior.</li>
-      <li>• Implemented machine-learning anomaly detection models using scikit-learn, improving suspicious activity detection accuracy to ~90%.<li>
-      <li>• Processed and visualized multiple behavioral features (keystrokes, login time, device patterns) to detect potential security threats and reduce false positives.<li>
-    </ul>
-    <p><strong>Developed:</strong> March 2025</p>
-  </div>
-</li>
-
-
-      <li class="project-item active" data-filter-item data-category="Data Analytics">
-        <div class="card p-4 mb-4 shadow rounded">
-          <h3 class="project-title">
-            <a href="https://github.com/namansingh2623/BDA_project" target="_blank">
-              U.S. Labor Market Projections: Pre and Post-Pandemic Analysis
-            </a>
-          </h3>
-          <p><strong>Technologies:</strong> Big Data, Dashboard, Storytelling</p>
-          <ul>
-            <li>• Preprocessed and integrated large datasets from the Bureau of Labor Statistics using pandas and openpyxl, cleaning and merging data for analysis.</li>
-            <li>• Developed an interactive dashboard with Plotly, showcasing 3-D visualizations for trend analysis and storytelling.</li>
-            <li>• Applied machine learning techniques using scikit-learn to analyze labor market changes, focusing on factors like educational attainment, skills requirements, and geographic shifts.</li>
-          </ul>
-          <p><strong>Developed:</strong> Nov 2024</p>
-        </div>
-      </li>
-
-      <li class="project-item active" data-filter-item data-category="Data Science">
-        <div class="card p-4 mb-4 shadow rounded">
-          <h3 class="project-title">
-            <a href="https://github.com/Malav786/Timeseries---Gluonts" target="_blank">
-              Multiple Time Series Forecasting
-            </a>
-          </h3>
-          <p><strong>Technologies:</strong> Python, TensorFlow, Scikit-learn, Time Series Analysis</p>
-          <ul>
-            <li>• Evaluated performance of deep learning and statistical forecasting models across diverse datasets.</li>
-            <li>• Achieved optimal results with the N-BEATS model, attaining a minimum Mean Absolute Percentage Error (MAPE) of 0.18.</li>
-            <li>• Published a research paper detailing the project's methodology, model comparisons, and key findings.</li>
-          </ul>
-          <p><strong>Developed:</strong> Apr 2023</p>
-        </div>
-      </li>
-
-      <li class="project-item active" data-filter-item data-category="Machine Learning">
-        <div class="card p-4 mb-4 shadow rounded">
-          <h3 class="project-title">
-            <a href="https://github.com/Malav786/Glassdoor" target="_blank">
-              Glassdoor
-            </a>
-          </h3>
-          <p><strong>Technologies:</strong> Web Scraping, Predictive Modeling, Data Analysis</p>
-          <ul>
-            <li>• Comprehensive project lifecycle from data collection to model deployment.</li>
-            <li>• Obtained dataset through web scraping, then cleaned and preprocessed to remove 5% of data and manage outliers.</li>
-            <li>• Trained various ML models on cleaned dataset, achieving 89.9% accuracy in predicting future and missing values.</li>
-            <li>• End-to-end data science project covers all stages from sourcing to deployment.</li>
-          </ul>
-          <p><strong>Developed:</strong> Nov 2022</p>
-        </div>
-      </li>
-
-      <li class="project-item active" data-filter-item data-category="Web Development">
-  <div class="card">
-    <h3 class="project-title">
-      <a href="https://github.com/Malav786/Django_Ecomm" target="_blank">
-              Django E-Commerce Website Development
-      </a>
-      
-    </h3>
-    <p><strong>Technologies:</strong> Big Data, Dashboard, Storytelling</p>
-    <ul>
-      <li>Developed a scalable backend using Django and PostgreSQL, implementing a RESTful API for dynamic product management and user authentication.</li>
-      <li>Designed a responsive frontend with HTML, Js, and Bootstrap, ensuring seamless cross-device compatibility.</li>
-      <li>Deployed the application on Heroku, utilizing Docker for containerization and CI/CD pipelines for automated testing and deployment.</li>
-    </ul>
-    <p><strong>Developed:</strong> Jan 2024</p>
-  </div>
-</li>
-
-<li class="project-item active" data-filter-item data-category="Full Stack">
-  <div class="card">
-    <h3 class="project-title">
-      <a href="https://github.com/MarlontheWizard/Park_Company_Parking_App" target="_blank">
-              Car Parking Platform Development
-      </a>
-    </h3>
-    <p><strong>Technologies:</strong> PHP Development, Docker, Stripe integration</p>
-    <ul>
-      <li>Developed a car parking platform using PHP, MySQL, and Docker, enabling real-time parking availability updates across 5+ locations.</li>
-      <li>Integrated Stripe payment gateway, processing over 100 transactions/month, for secure and seamless payments.</li>
-      <li>Implemented automated testing and optimized user experience with a mobile-responsive design, reducing load time by 30% for enhanced user engagement.</li>
-    </ul>
-    <p><strong>Developed:</strong> Mar 2024</p>
-  </div>
-</li>
-
-
-    </ul>
-
-  </section>
-</article>
-
-
-
-
-      <!--
-        - #BLOG
-      
-
-      <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
-
-                  <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-
-                  <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
-
-                  <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-      -->
-
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.6818412241796!2d-75.12431162401214!3d39.94840517151875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8f118887d7d%3A0xc137b19be6bb607f!2sRutgers%20University%E2%80%93Camden!5e1!3m2!1sen!2sus!4v1739157268960!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </figure>
-        </section>
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="https://formsubmit.co/01782fd54dd8cceb24efb96b57668831" method="POST">
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article>
-
-    </div>
-
   </main>
 
-  <!--
-    - custom js link
-  -->
-  <script src="script.js" defer></script>
+  <!-- ================= ABOUT PAGE VIEW ================= -->
+  <section class="page-view" id="about-page">
+    <button class="btn back-btn" onclick="closePages()">&lt; Back to Home</button>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="pixel-text stroke-title">⛏️ About Malav</h1>
+        <p>Artificial Intelligence & Robotics Engineer</p>
+      </div>
 
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      <div class="about-grid">
+        <div class="about-photo-wrapper">
+          <div class="about-photo-box">
+            <div class="about-photo-bg-1"></div>
+            <div class="about-photo-bg-2"></div>
+            <!-- FIX #1: dedicated about photo file -->
+            <img src="images/image.png" alt="Malav Champaneria" class="about-photo" />
+            <div class="corner-pin pin-tl"></div>
+            <div class="corner-pin pin-tr"></div>
+            <div class="corner-pin pin-bl"></div>
+            <div class="corner-pin pin-br"></div>
+          </div>
+        </div>
+
+        <div class="space-y-4" style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="card">
+            <h2 class="pixel-text stroke-title" style="font-size: 13px; margin-bottom: 12px;">🧠 I build software that
+              thinks — and ships.</h2>
+            <p style="margin-bottom: 12px; font-size: 13px; line-height: 1.6;">
+              I'm a Software Engineer and a Master's student in Computer Science at Rutgers University (GPA 3.85/4.00).
+              I design and ship full-stack systems end to end — APIs, pipelines, databases, and the deployment around
+              them — with a specialty for putting AI, machine learning, and robotics to work inside real products.
+            </p>
+            <p style="margin-bottom: 12px; font-size: 13px; line-height: 1.6;">
+              I've built backends handling 150+ requests a minute at 98% accuracy, cut API response times by 40%, and
+              engineered semantic search into a live government portal for the <strong>Government of India</strong>.
+              This summer I wrote the autonomous navigation software for a 1,000-pound field robot at the
+              <strong>U.S. Department of Agriculture</strong> — a full GPS-RTK + depth-vision pipeline on ROS2 that hit
+              90% autonomy across 10+ acres.
+            </p>
+            <p style="font-size: 13px; line-height: 1.6;">
+              My stack runs from Python, FastAPI, and PostgreSQL to Docker, CI/CD, and ONNX — plus four peer-reviewed
+              papers and a Rutgers-<strong>funded</strong> ML project along the way. I care about one thing above all:
+              software that's not just clever, but reliable, scalable, and genuinely useful. Poke around the ⛏️ Projects
+              and 💼 Experience tabs — there's a lot to dig up.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="card stat-card">
+              <div class="stat-num pixel-text">4+</div>
+              <div class="stat-desc pixel-text">Years Code Experience</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-num pixel-text">10+</div>
+              <div class="stat-desc pixel-text">Completed Projects</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-num pixel-text">15+</div>
+              <div class="stat-desc pixel-text">Tech Tools Mastered</div>
+            </div>
+            <div class="card stat-card">
+              <div class="stat-num pixel-text">∞</div>
+              <div class="stat-desc pixel-text">Learning Mindset</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS PAGE VIEW ================= -->
+  <section class="page-view" id="skills-page">
+    <button class="btn back-btn" onclick="closePages()">&lt; Back to Home</button>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="pixel-text stroke-title">🛠️ My Tech Arsenal</h1>
+        <p>The languages, frameworks, and systems I build with — engineering first, AI-fluent throughout</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="card">
+          <h3 class="pixel-text skills-category-title">💻 Languages & Core CS</h3>
+          <div class="skills-list">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">JavaScript / TypeScript</span>
+            <span class="skill-tag">C / C++</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">Data Structures & Algorithms</span>
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">System Design</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="pixel-text skills-category-title">⚙️ Backend & APIs</h3>
+          <div class="skills-list">
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">Pydantic</span>
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">Testing & Debugging</span>
+            <span class="skill-tag">SDLC</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="pixel-text skills-category-title">🚀 Cloud, DevOps & MLOps</h3>
+          <div class="skills-list">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">CI / CD</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Databricks</span>
+            <span class="skill-tag">ONNX</span>
+            <span class="skill-tag">Deployment & Monitoring</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="pixel-text skills-category-title">🧠 AI / ML & GenAI</h3>
+          <div class="skills-list">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">LLMs & Embeddings</span>
+            <span class="skill-tag">Hugging Face</span>
+            <span class="skill-tag">Transformers / BERT</span>
+            <span class="skill-tag">GNNs</span>
+            <span class="skill-tag">Agentic AI</span>
+            <span class="skill-tag">LLMOps</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="pixel-text skills-category-title">🗄️ Data & Databases</h3>
+          <div class="skills-list">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MS SQL</span>
+            <span class="skill-tag">Vector Databases (FAISS)</span>
+            <span class="skill-tag">Query Optimization</span>
+            <span class="skill-tag">ETL Pipelines</span>
+            <span class="skill-tag">Feature Engineering</span>
+            <span class="skill-tag">Data Modeling</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="pixel-text skills-category-title">🤖 Robotics & Perception</h3>
+          <div class="skills-list">
+            <span class="skill-tag">ROS2</span>
+            <span class="skill-tag">Autonomous Navigation</span>
+            <span class="skill-tag">RTK-GPS</span>
+            <span class="skill-tag">RGB-Depth Vision</span>
+            <span class="skill-tag">Sensor Fusion</span>
+            <span class="skill-tag">Computer Vision</span>
+            <span class="skill-tag">System Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card skills-levels-card">
+        <h2 class="pixel-text stroke-title text-center" style="font-size: 13px; margin-bottom: 20px;">🎯 What I Bring to
+          a Team</h2>
+        <div class="skills-levels-grid">
+          <div class="skills-level-col">
+            <h3 class="pixel-text">Ship It</h3>
+            <div class="skills-level-item">
+              <span>Backend & API Engineering</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill expert"></div>
+              </div>
+            </div>
+            <div class="skills-level-item">
+              <span>Python & Clean Code</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill expert"></div>
+              </div>
+            </div>
+            <div class="skills-level-item">
+              <span>End-to-End ML Pipelines</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill expert"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-level-col">
+            <h3 class="pixel-text">Strong Hands</h3>
+            <div class="skills-level-item">
+              <span>LLMs, RAG & GenAI</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill advanced"></div>
+              </div>
+            </div>
+            <div class="skills-level-item">
+              <span>Cloud, Docker & CI/CD</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill advanced"></div>
+              </div>
+            </div>
+            <div class="skills-level-item">
+              <span>Databases & SQL at Scale</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill advanced"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-level-col">
+            <h3 class="pixel-text">Leveling Up</h3>
+            <div class="skills-level-item">
+              <span>Robotics & Autonomy (ROS2)</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill learning"></div>
+              </div>
+            </div>
+            <div class="skills-level-item">
+              <span>Distributed Systems</span>
+              <div class="skills-bar">
+                <div class="skills-bar-fill learning"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS PAGE VIEW ================= -->
+  <section class="page-view" id="projects-page">
+    <button class="btn back-btn" onclick="closePages()">&lt; Back to Home</button>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="pixel-text stroke-title">🚀 My Projects</h1>
+        <div class="projects-actions">
+          <button class="btn" onclick="openCaseStudiesModal()">View Case Studies</button>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <!-- ===== NEW Project: RegIntel (RAG / LLM) ===== -->
+        <div class="card project-card featured">
+          <span class="project-ribbon pixel-text">✨ New</span>
+          <div class="project-media-box media-regintel">
+            <span class="project-emoji">⚖️</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">RegIntel — AI for Compliance</h3>
+            <p>Domain-specialized RAG system answering questions on SEC filings (10-K, 10-Q) and CFR Title 17 rules.
+              Dual retrieval pipelines, query routing, evidence ranking, and hallucination guardrails.</p>
+            <div class="project-tags">
+              <span class="project-tag">RAG</span>
+              <span class="project-tag">FAISS</span>
+              <span class="project-tag">LLM</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">Streamlit</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/RegIntel" target="_blank" class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('RegIntel')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== NEW Project: Brain MRI Tumor Segmentation ===== -->
+        <div class="card project-card featured">
+          <span class="project-ribbon pixel-text">✨ New</span>
+          <div class="project-media-box media-mri">
+            <span class="project-emoji">🧠</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">Brain MRI Tumor Segmentation</h3>
+            <p>Metadata-infused, attention-gated U-Net for lower-grade glioma segmentation. Fuses clinical metadata
+              (age, histology, genomic clusters) with imaging, reaching 0.896 Dice / 0.814 IoU.</p>
+            <div class="project-tags">
+              <span class="project-tag">PyTorch</span>
+              <span class="project-tag">U-Net</span>
+              <span class="project-tag">Attention</span>
+              <span class="project-tag">Medical AI</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/Brain_MRI_Tumor_Segmentation" target="_blank"
+                class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('Brain MRI Segmentation')">Demo</button>
+              <a href="http://austinspadaro.com/brain-mri-segmentation/" target="_blank" class="btn btn-small">Live
+                Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== NEW Project: Polymer Energy Prediction (funded) ===== -->
+        <div class="card project-card featured">
+          <span class="project-ribbon pixel-text">💰 Funded</span>
+          <div class="project-media-box media-polymer">
+            <span class="project-emoji">⚛️</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">Polymer Energy Prediction</h3>
+            <p>Rutgers-funded ML system predicting polymer energy states from 2,916 CIF structures. DFT-based features +
+              stacked ensembles (RF, XGBoost, LightGBM, MLP) lifted performance from 73% to 80% MCC.</p>
+            <div class="project-tags">
+              <span class="project-tag">GNN</span>
+              <span class="project-tag">XGBoost</span>
+              <span class="project-tag">PyTorch Geometric</span>
+              <span class="project-tag">FastAPI</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/polymer-stacking-discovery" target="_blank"
+                class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('Polymer Energy Prediction')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== NEW Project: HARV Centerline Segmentation (USDA) ===== -->
+        <div class="card project-card featured">
+          <span class="project-ribbon pixel-text">✨ New</span>
+          <div class="project-media-box media-harv">
+            <span class="project-emoji">🚜</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">HARV Centerline Segmentation</h3>
+            <p>U-Net pipeline detecting drivable crop-row centerlines from Farm-ng robot RGB+Depth frames. Custom
+              dataset, automated mask generation, and BCE/Dice training for real-time field navigation.</p>
+            <div class="project-tags">
+              <span class="project-tag">U-Net</span>
+              <span class="project-tag">OpenCV</span>
+              <span class="project-tag">RGB-D</span>
+              <span class="project-tag">Segmentation</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786" target="_blank" class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('HARV Centerline Segmentation')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="card project-card">
+          <div class="project-media-box">
+            <span class="project-emoji">🛡️</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">WildFace Attacks & Defenses</h3>
+            <p>Executed black-box model inversion attacks on CNN models using autoencoders. Designed
+              probability-rounding, noise injection, and Isolation Forest defenses.</p>
+            <div class="project-tags">
+              <span class="project-tag">PyTorch</span>
+              <span class="project-tag">Scikit-learn</span>
+              <span class="project-tag">Defend System</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/pai" target="_blank" class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('WildFace Recognition')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card project-card">
+          <div class="project-media-box">
+            <span class="project-emoji">⌨️</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">SecureByBehavior</h3>
+            <p>Created behavior-based authentication systems checking keystrokes and login anomalies with Isolation
+              Forest machine learning on 2500+ records.</p>
+            <div class="project-tags">
+              <span class="project-tag">Feature Eng</span>
+              <span class="project-tag">Scikit-learn</span>
+              <span class="project-tag">Anomaly Det</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/SecureByBehavior" target="_blank" class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('SecureByBehavior')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card project-card">
+          <div class="project-media-box">
+            <span class="project-emoji">📈</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">U.S. Labor Analytics</h3>
+            <p>Built big data preprocessors and interactive 3D dashboards displaying pre and post-pandemic employment
+              projections from BLS statistics.</p>
+            <div class="project-tags">
+              <span class="project-tag">Plotly</span>
+              <span class="project-tag">Big Data</span>
+              <span class="project-tag">Pandas</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/namansingh2623/BDA_project" target="_blank" class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('U.S. Labor Market Projections')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="card project-card">
+          <div class="project-media-box">
+            <span class="project-emoji">🔮</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">Time Series GluonTS</h3>
+            <p>Analyzed deep learning and statistical forecasting models on multi-series datasets, hitting minimal MAPE
+              (0.18) using N-BEATS network.</p>
+            <div class="project-tags">
+              <span class="project-tag">TensorFlow</span>
+              <span class="project-tag">GluonTS</span>
+              <span class="project-tag">Forecasting</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/Timeseries---Gluonts" target="_blank"
+                class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('Time Series Forecasting')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="card project-card">
+          <div class="project-media-box">
+            <span class="project-emoji">🪟</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">Glassdoor Scraping</h3>
+            <p>Created an end-to-end data pipeline: scraped jobs data, preprocessed outliers, and deployed models
+              predicting salaries with 89.9% accuracy.</p>
+            <div class="project-tags">
+              <span class="project-tag">Web Scraping</span>
+              <span class="project-tag">ML models</span>
+              <span class="project-tag">Predictive</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/Glassdoor" target="_blank" class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('Glassdoor Analysis')">Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="card project-card">
+          <div class="project-media-box">
+            <span class="project-emoji">🛒</span>
+          </div>
+          <div class="project-info">
+            <h3 class="pixel-text">Django E-Commerce</h3>
+            <p>Designed a scalable product database and backend RESTful APIs with PostgreSQL. Integrated containerized
+              testing and deployments on Docker.</p>
+            <div class="project-tags">
+              <span class="project-tag">Django</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">Docker</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://github.com/Malav786/Django_Ecomm" target="_blank" class="btn btn-small">GitHub</a>
+              <button class="btn btn-small" onclick="simulateReadme('Django E-Commerce')">Demo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- README Terminal Simulator Modal -->
+  <div class="modal-overlay" id="readme-modal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <div class="window-dots">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <span class="modal-title-text" id="readme-modal-title">README.md - Terminal</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeReadmeModal()">X</button>
+      </div>
+      <div class="modal-body">
+        <pre id="readme-content"></pre>
+      </div>
+      <div class="modal-footer">
+        <span>Press ESC or click X to close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Studies Modal -->
+  <div class="modal-overlay" id="case-studies-modal">
+    <div class="modal-window" style="max-width: 900px; max-height: 90vh;">
+      <div class="modal-header" style="background: linear-gradient(to right, #54C754, #387F2D);">
+        <div class="modal-header-left">
+          <div class="window-dots">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <span class="modal-title-text" style="color: white; font-weight: bold;">📊 Product Case Studies</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeCaseStudiesModal()">X</button>
+      </div>
+      <div class="modal-body" style="background: white; color: #825432; overflow-y: auto; max-height: 70vh;">
+        <div class="case-studies-grid">
+
+          <!-- Case 1 -->
+          <div class="card case-card">
+            <div class="case-card-header">
+              <div class="case-icon-box">🛡️</div>
+              <div class="case-title-box">
+                <h3 class="pixel-text font-bold">WildFace Recognition</h3>
+                <p>Model Inversion Defenses & Attack Systems</p>
+              </div>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">📋 Overview</h4>
+              <p class="case-section-desc">Designed a secure attack-and-defense testing suite for convolutional face
+                recognition models using PyTorch.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">❌ Problem & ✅ Solution</h4>
+              <p class="case-section-desc">Model Inversion Attacks pose a heavy privacy leak. We countered this by
+                deploying rounders, filters, and an Isolation Forest query pattern monitor to increase costs 7x.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">🛠️ Technologies</h4>
+              <div class="case-techs">
+                <span class="case-tech-tag">PyTorch</span>
+                <span class="case-tech-tag">Scikit-learn</span>
+                <span class="case-tech-tag">Autoencoder</span>
+                <span class="case-tech-tag">NES</span>
+              </div>
+            </div>
+            <div class="case-card-buttons">
+              <a href="https://github.com/Malav786/pai" target="_blank" class="btn btn-small">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Case 2 -->
+          <div class="card case-card">
+            <div class="case-card-header">
+              <div class="case-icon-box">🛰️</div>
+              <div class="case-title-box">
+                <h3 class="pixel-text font-bold">USDA GPS RTK Navigation</h3>
+                <p>Autonomous Robotics on Farm-ng Vehicles</p>
+              </div>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">📋 Overview</h4>
+              <p class="case-section-desc">Automated a commercial Farm-ng agricultural robot to steer autonomously over
+                10 acres of cranberry fields.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">❌ Problem & ✅ Solution</h4>
+              <p class="case-section-desc">Manual crops navigation is slow and prone to errors. We combined GPS RTK
+                centimeter-grade positioning with depth camera heatmaps, achieving 90% autonomous accuracy.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">🛠️ Technologies</h4>
+              <div class="case-techs">
+                <span class="case-tech-tag">GPS RTK</span>
+                <span class="case-tech-tag">Depth Heatmaps</span>
+                <span class="case-tech-tag">ROS / Python</span>
+                <span class="case-tech-tag">Sensor Fusion</span>
+              </div>
+            </div>
+            <div class="case-card-buttons">
+              <button class="btn btn-small" onclick="closeCaseStudiesModal(); openPage('experience');">View Work
+                Timeline</button>
+            </div>
+          </div>
+
+          <!-- Case 3: RegIntel -->
+          <div class="card case-card">
+            <div class="case-card-header">
+              <div class="case-icon-box">⚖️</div>
+              <div class="case-title-box">
+                <h3 class="pixel-text font-bold">RegIntel</h3>
+                <p>Retrieval-Augmented AI for Regulatory Compliance</p>
+              </div>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">📋 Overview</h4>
+              <p class="case-section-desc">A domain-specialized RAG system that answers questions about SEC filings and
+                CFR regulatory rules using evidence-based retrieval and large language models.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">❌ Problem & ✅ Solution</h4>
+              <p class="case-section-desc">Compliance teams sift through dense filings and rules by hand. RegIntel
+                routes each query to filing or rule retrievers, ranks evidence from FAISS indexes, and grounds every
+                answer with citations — with guardrails that block hallucinated responses.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">🛠️ Technologies</h4>
+              <div class="case-techs">
+                <span class="case-tech-tag">RAG</span>
+                <span class="case-tech-tag">FAISS</span>
+                <span class="case-tech-tag">Embeddings</span>
+                <span class="case-tech-tag">FastAPI</span>
+                <span class="case-tech-tag">Streamlit</span>
+              </div>
+            </div>
+            <div class="case-card-buttons">
+              <a href="https://github.com/Malav786" target="_blank" class="btn btn-small">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Case 4: Polymer Energy Prediction -->
+          <div class="card case-card">
+            <div class="case-card-header">
+              <div class="case-icon-box">⚛️</div>
+              <div class="case-title-box">
+                <h3 class="pixel-text font-bold">Polymer Energy Prediction</h3>
+                <p>Funded ML System for Materials Discovery</p>
+              </div>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">📋 Overview</h4>
+              <p class="case-section-desc">A Rutgers-funded pipeline predicting polymer energy states from 2,916 CIF
+                structures, helping identify low-energy configurations for layer formation.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">❌ Problem & ✅ Solution</h4>
+              <p class="case-section-desc">Finding stable polymer configurations experimentally is slow. DFT-based
+                features and nearest-neighbor interactions fed stacked ensembles (RF, XGBoost, LightGBM, MLP), raising
+                performance from 73% to 80% MCC, with a React dashboard and 3D structure viewer for researchers.</p>
+            </div>
+            <div class="case-section">
+              <h4 class="case-section-title">🛠️ Technologies</h4>
+              <div class="case-techs">
+                <span class="case-tech-tag">GNN</span>
+                <span class="case-tech-tag">XGBoost</span>
+                <span class="case-tech-tag">UMAP</span>
+                <span class="case-tech-tag">FastAPI</span>
+                <span class="case-tech-tag">React</span>
+              </div>
+            </div>
+            <div class="case-card-buttons">
+              <a href="https://github.com/Malav786" target="_blank" class="btn btn-small">GitHub</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer" style="background: #E5E7EB; border-top: 4px solid var(--card-border); color: #374151;">
+        <span>Click X or press ESC to close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= EXPERIENCE PAGE VIEW ================= -->
+  <section class="page-view" id="experience-page">
+    <button class="btn back-btn" onclick="closePages()">&lt; Back to Home</button>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="pixel-text stroke-title">💼 Work Experience</h1>
+        <p>My professional developer timeline</p>
+      </div>
+
+      <!-- At-a-Glance Summary Banner -->
+      <div class="experience-summary-banner">
+        <div class="summary-card">
+          <div class="summary-icon">🤖</div>
+          <div class="summary-info">
+            <span class="summary-label">Core Domains</span>
+            <span class="summary-value">Software & AI/ML engineering, Robotics, AI & Vision</span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-icon">🏛️</div>
+          <div class="summary-info">
+            <span class="summary-label">Key Experience</span>
+            <span class="summary-value">USDA & INFLIBNET</span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-icon">⚡</div>
+          <div class="summary-info">
+            <span class="summary-label">Peak Performance</span>
+            <span class="summary-value">90% Autonomy | 40% Latency Cut | 75% Reduced labour hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-timeline">
+        <!-- Progress Fill Line & Moving Tracker -->
+        <div class="experience-timeline-progress" id="experience-progress-line"></div>
+        <div class="timeline-tracker" id="experience-timeline-tracker">
+          <div class="timeline-tracker-badge">
+            <img src="images/image.png" alt="Timeline Tracker" class="tracker-avatar-img" />
+          </div>
+          <div class="tracker-pulse-ring"></div>
+        </div>
+
+        <!-- Exp 1: USDA (FIX #4: dates matched to resume) -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card-wrapper">
+            <div class="card experience-card">
+              <div class="experience-header">
+                <div class="experience-company-title">
+                  <div class="company-logo-badge usda-logo" title="U.S. Department of Agriculture">🌾</div>
+                  <div>
+                    <h3 class="pixel-text">Research Assistant (Robotics)</h3>
+                    <h4>U.S. Department of Agriculture (USDA) <span class="company-tag">Federal Agency</span></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span>📍 New Jersey, USA</span>
+                <span>📅 May 2025 - Aug 2025</span>
+              </div>
+
+              <div class="experience-details">
+                <div class="experience-details-title">🛠️ Technologies:</div>
+                <div class="experience-techs">
+                  <span class="experience-tech-tag">GPS RTK</span>
+                  <span class="experience-tech-tag">Depth Sensors</span>
+                  <span class="experience-tech-tag">Python</span>
+                  <span class="experience-tech-tag">ROS2</span>
+                </div>
+                <div class="experience-details-title">✨ Key Achievements:</div>
+                <ul class="experience-bullet-list">
+                  <li>• Architected and deployed an <strong>end-to-end autonomous navigation pipeline</strong> for a
+                    Farm-ng robot in
+                    real farm environments, integrating <strong>GPS RTK (1–2 cm accuracy)</strong>, <strong>RGB-depth
+                      vision</strong>, and <strong>ROS2-based control systems</strong>.</li>
+                  <li>• Developed a <strong>3D point cloud–based waypoint planning approach</strong> with depth-aware
+                    gradient heatmaps,
+                    improving navigation precision by <strong>∼10%</strong> over RGB-only methods.</li>
+                  <li>• Enabled reliable traversal across <strong>10+ acres</strong> with <strong>90% autonomous
+                      operation</strong>, reducing manual
+                    monitoring by <strong>75%</strong> through robust sensor fusion and perception–control integration.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exp 2: INFLIBNET (FIX #4: Jan 2024 - Aug 2024 per resume) -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card-wrapper">
+            <div class="card experience-card">
+              <div class="experience-header">
+                <div class="experience-company-title">
+                  <div class="company-logo-badge inflibnet-logo" title="INFLIBNET Centre">🏛️</div>
+                  <div>
+                    <h3 class="pixel-text">Python AI Developer</h3>
+                    <h4>INFLIBNET (Govt. of India) <span class="company-tag">Govt R&D</span></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span>📍 Gandhinagar, India</span>
+                <span>📅 Jan 2024 - Aug 2024</span>
+              </div>
+
+              <div class="experience-details">
+                <div class="experience-details-title">🛠️ Technologies:</div>
+                <div class="experience-techs">
+                  <span class="experience-tech-tag">BERT</span>
+                  <span class="experience-tech-tag">Transformers</span>
+                  <span class="experience-tech-tag">NLP</span>
+                  <span class="experience-tech-tag">Python</span>
+                </div>
+                <div class="experience-details-title">✨ Key Achievements:</div>
+                <ul class="experience-bullet-list">
+                  <li>• Integrated <strong>BERT</strong> and <strong>Sentence Transformers</strong> into an educational
+                    portal, boosting semantic
+                    relevance scores by <strong>18%</strong>.</li>
+                  <li>• Built <strong>metadata-driven keyword mapping</strong>, elevating precise query matches by
+                    <strong>22%</strong> and lowering
+                    irrelevant results.
+                  </li>
+                  <li>• Benchmarked retrieval models, with <strong>Sentence Transformers</strong> delivering <strong>40%
+                      faster execution</strong> while
+                    maintaining accuracy.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exp 3: Innovatics (FIX #4: May 2023 - Jul 2023 per resume, no more overlap) -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card-wrapper">
+            <div class="card experience-card">
+              <div class="experience-header">
+                <div class="experience-company-title">
+                  <div class="company-logo-badge innovatics-logo" title="Innovatics Tech">⚡</div>
+                  <div>
+                    <h3 class="pixel-text">AI/ML Backend Engineer Intern</h3>
+                    <h4>Innovatics <span class="company-tag">AI Tech Lab</span></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span>📍 Ahmedabad, India</span>
+                <span>📅 May 2023 - Jul 2023</span>
+              </div>
+
+              <div class="experience-details">
+                <div class="experience-details-title">🛠️ Technologies:</div>
+                <div class="experience-techs">
+                  <span class="experience-tech-tag">FastAPI</span>
+                  <span class="experience-tech-tag">Flask</span>
+                  <span class="experience-tech-tag">Mediapipe</span>
+                  <span class="experience-tech-tag">OpenCV</span>
+                </div>
+                <div class="experience-details-title">✨ Key Achievements:</div>
+                <ul class="experience-bullet-list">
+                  <li>• Implemented a computer vision application using <strong>FastAPI</strong> and
+                    <strong>Flask</strong>, processing <strong>150+ images/min</strong>
+                    with <strong>98% accuracy</strong> for real-time use cases.
+                  </li>
+                  <li>• Applied scalable backend APIs handling <strong>50+ concurrent requests/min</strong>, improving
+                    system reliability
+                    and integration efficiency.</li>
+                  <li>• Optimized backend workflows, reducing response time by <strong>40%</strong> and increasing
+                    overall processing
+                    throughput.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACHIEVEMENTS PAGE VIEW ================= -->
+  <section class="page-view" id="achievements-page">
+    <button class="btn back-btn" onclick="closePages()">&lt; Back to Home</button>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="pixel-text stroke-title">🏆 Achievements</h1>
+        <p>Certifications, metrics, and milestones</p>
+      </div>
+
+      <div class="achievements-grid">
+        <!-- Cert 1 -->
+        <div class="card achievement-card">
+          <div class="achievement-icon">🛡️</div>
+          <div class="achievement-content">
+            <h3 class="pixel-text">Cisco Certified Network Routing</h3>
+            <p>Specialization in networking infrastructure, routing switches, and network configuration safety
+              pipelines.</p>
+            <span class="date text-secondary">Credly verified</span>
+          </div>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="card achievement-card">
+          <div class="achievement-icon">☁️</div>
+          <div class="achievement-content">
+            <h3 class="pixel-text">AWS Academy Graduate</h3>
+            <p>Competencies in cloud computing architectures, load balancing, serverless systems, and cloud databases.
+            </p>
+            <span class="date text-secondary">AWS Certified</span>
+          </div>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="card achievement-card">
+          <div class="achievement-icon">🗄️</div>
+          <div class="achievement-content">
+            <h3 class="pixel-text">SQL Database Certification</h3>
+            <p>Database structure designs, optimized SQL queries, indexing metrics, and relational schemas
+              configurations.</p>
+            <span class="date text-secondary">Verified Certificate</span>
+          </div>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="card achievement-card" style="cursor: pointer;" onclick="openPage('publications')">
+          <div class="achievement-icon">📝</div>
+          <div class="achievement-content">
+            <h3 class="pixel-text">4 Peer-Reviewed Papers</h3>
+            <p>Published in CRC Press, Springer Nature, Springer India, and Elsevier on ML in education, textile AI,
+              sentiment analysis, and time series forecasting.</p>
+            <span class="date text-secondary">View Publications ↗</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card achievements-stats-card">
+        <h2 class="pixel-text stroke-title text-center" style="font-size: 13px; margin-bottom: 20px;">📊 Portfolio
+          Statistics</h2>
+        <div class="achievements-stats-grid">
+          <div class="achievements-stat-item">
+            <div class="value pixel-text">20+</div>
+            <!-- FIX #2: typo corrected -->
+            <div class="label pixel-text">Cranberry field trials</div>
+          </div>
+          <div class="achievements-stat-item">
+            <div class="value pixel-text">50K+</div>
+            <div class="label pixel-text">Scanned documents</div>
+          </div>
+          <div class="achievements-stat-item">
+            <div class="value pixel-text">98%</div>
+            <div class="label pixel-text">Image detection</div>
+          </div>
+          <div class="achievements-stat-item">
+            <div class="value pixel-text">4</div>
+            <div class="label pixel-text">Publications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS PAGE VIEW (Step 2) ================= -->
+  <section class="page-view" id="publications-page">
+    <button class="btn back-btn" onclick="closePages()">&lt; Back to Home</button>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="pixel-text stroke-title">📚 Enchanted Library</h1>
+        <p>Peer-reviewed research published in Springer, Elsevier & CRC Press</p>
+      </div>
+
+      <!-- Bookshelf: each paper is a book spine on a wooden shelf -->
+      <div class="bookshelf">
+        <a href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003540212-19/unlocking-power-machine-learning-education-comprehensive-overview-opportunities-challenges-dhyani-panchal-malav-champaneria-aarav-agarwal-manan-shah"
+          target="_blank" rel="noopener" class="book book-spine-1">
+          <span class="book-year pixel-text">2025</span>
+          <span class="book-title pixel-text">Unlocking the Power of Machine Learning in Education</span>
+          <span class="book-publisher">CRC Press</span>
+        </a>
+
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-86296-0_14" target="_blank" rel="noopener"
+          class="book book-spine-2">
+          <span class="book-year pixel-text">2024</span>
+          <span class="book-title pixel-text">From Threads to Algorithms: AI Innovations in Textile Production</span>
+          <span class="book-publisher">Springer Nature</span>
+        </a>
+
+        <a href="https://link.springer.com/article/10.1007/s13198-023-02214-6" target="_blank" rel="noopener"
+          class="book book-spine-3">
+          <span class="book-year pixel-text">2024</span>
+          <span class="book-title pixel-text">Review on Sentiment Analysis of Social Media for Stock Market
+            Prediction</span>
+          <span class="book-publisher">Springer India</span>
+        </a>
+
+        <a href="https://www.sciencedirect.com/science/article/pii/S1877050923020367" target="_blank" rel="noopener"
+          class="book book-spine-4">
+          <span class="book-year pixel-text">2023</span>
+          <span class="book-title pixel-text">Empirical Evaluation of Deep Learning Models for Time Series
+            Datasets</span>
+          <span class="book-publisher">Elsevier</span>
+        </a>
+      </div>
+      <div class="bookshelf-plank"></div>
+
+      <!-- Detailed cards below the shelf for readability -->
+      <div class="publications-list">
+        <a href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003540212-19/unlocking-power-machine-learning-education-comprehensive-overview-opportunities-challenges-dhyani-panchal-malav-champaneria-aarav-agarwal-manan-shah"
+          target="_blank" rel="noopener" class="card publication-card">
+          <div class="publication-icon">📕</div>
+          <div class="publication-content">
+            <h3 class="pixel-text">Unlocking the Power of Machine Learning in Education</h3>
+            <p class="publication-desc">A comprehensive overview of opportunities and challenges for applying machine
+              learning across educational systems.</p>
+            <div class="publication-meta">
+              <span class="publication-badge">CRC Press</span>
+              <span class="publication-date">Mar 2025</span>
+              <span class="publication-link-hint">Read paper ↗</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-86296-0_14" target="_blank" rel="noopener"
+          class="card publication-card">
+          <div class="publication-icon">📗</div>
+          <div class="publication-content">
+            <h3 class="pixel-text">From Threads to Algorithms: AI Innovations in Textile Production</h3>
+            <p class="publication-desc">Explores how AI and machine learning are transforming modern textile
+              manufacturing and production workflows.</p>
+            <div class="publication-meta">
+              <span class="publication-badge">Springer Nature</span>
+              <span class="publication-date">Oct 2024</span>
+              <span class="publication-link-hint">Read paper ↗</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://link.springer.com/article/10.1007/s13198-023-02214-6" target="_blank" rel="noopener"
+          class="card publication-card">
+          <div class="publication-icon">📘</div>
+          <div class="publication-content">
+            <h3 class="pixel-text">Review on Sentiment Analysis of Social Media for Stock Market Prediction</h3>
+            <p class="publication-desc">A survey of NLP-driven sentiment analysis techniques and their application to
+              forecasting stock market movements.</p>
+            <div class="publication-meta">
+              <span class="publication-badge">Springer India</span>
+              <span class="publication-date">Jun 2024</span>
+              <span class="publication-link-hint">Read paper ↗</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.sciencedirect.com/science/article/pii/S1877050923020367" target="_blank" rel="noopener"
+          class="card publication-card">
+          <div class="publication-icon">📙</div>
+          <div class="publication-content">
+            <h3 class="pixel-text">Empirical Evaluation of Deep Learning Models for Time Series Datasets</h3>
+            <p class="publication-desc">Benchmarks deep learning and statistical forecasting architectures across
+              multiple time series datasets.</p>
+            <div class="publication-meta">
+              <span class="publication-badge">Elsevier</span>
+              <span class="publication-date">Jan 2023</span>
+              <span class="publication-link-hint">Read paper ↗</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="publications-scholar">
+        <a href="https://scholar.google.com/citations?user=fd2IfnsAAAAJ&hl=en" target="_blank" rel="noopener"
+          class="btn">🎓 View Google Scholar Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT PAGE VIEW (FIX #5) ================= -->
+  <section class="page-view" id="contact-page">
+    <button class="btn back-btn" onclick="closePages()">&lt; Back to Home</button>
+    <div class="page-container">
+      <div class="page-header">
+        <h1 class="pixel-text stroke-title">📬 Contact Me</h1>
+        <p>Let's build something together — reach out anytime!</p>
+      </div>
+
+      <div class="contact-grid">
+        <a href="mailto:mchamp2509@gmail.com" class="card contact-card">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-content">
+            <h3 class="pixel-text">Email</h3>
+            <p>mchamp2509@gmail.com</p>
+          </div>
+        </a>
+
+        <a href="tel:+18568319928" class="card contact-card">
+          <div class="contact-icon">📞</div>
+          <div class="contact-content">
+            <h3 class="pixel-text">Phone</h3>
+            <p>+1 856-831-9928</p>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/malav-champaneria" target="_blank" rel="noopener"
+          class="card contact-card">
+          <div class="contact-icon">💼</div>
+          <div class="contact-content">
+            <h3 class="pixel-text">LinkedIn</h3>
+            <p>linkedin.com/in/malav-champaneria</p>
+          </div>
+        </a>
+
+        <a href="https://github.com/Malav786" target="_blank" rel="noopener" class="card contact-card">
+          <div class="contact-icon">💻</div>
+          <div class="contact-content">
+            <h3 class="pixel-text">GitHub</h3>
+            <p>github.com/Malav786</p>
+          </div>
+        </a>
+
+        <div class="card contact-card">
+          <div class="contact-icon">📍</div>
+          <div class="contact-content">
+            <h3 class="pixel-text">Location</h3>
+            <p>New Jersey, USA</p>
+          </div>
+        </div>
+
+        <!-- FIX #6: Resume also downloadable from Contact page -->
+        <a href="assets/MalavChampaneria_Resume.pdf" download="MalavChampaneria_Resume.pdf"
+          class="card contact-card contact-card-resume">
+          <div class="contact-icon">📜</div>
+          <div class="contact-content">
+            <h3 class="pixel-text">Resume</h3>
+            <p>Download PDF</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AI CHATBOT WIDGET ================= -->
+  <div class="chatbot-wrapper">
+    <!-- Pulsing Prompt Label -->
+    <div class="chatbot-bubble-label pixel-text">🤖 Chat with my AI!</div>
+
+    <!-- Chat Button (FIX #1: dedicated bot avatar file) -->
+    <button class="chatbot-toggle-btn" id="chat-toggle" aria-label="Toggle AI Chatbot">
+      <img src="images/bot-avatar.svg" alt="AI Agent Avatar" />
+    </button>
+
+    <!-- Chat Dialog Panel -->
+    <div class="chatbot-panel" id="chat-panel">
+      <div class="chatbot-header">
+        <div class="chatbot-header-left">
+          <div class="chatbot-header-avatar">
+            <img src="images/bot-avatar.svg" alt="AI Agent Avatar" />
+          </div>
+          <div class="chatbot-header-title">
+            <h3 class="pixel-text">Malav's AI</h3>
+            <p>Ask about my ML & Robotics world!</p>
+          </div>
+        </div>
+        <button class="chatbot-header-close" id="chat-close">X</button>
+      </div>
+
+      <!-- Quick suggestions -->
+      <div class="chatbot-suggestions">
+        <button class="chatbot-suggestion-btn" onclick="sendSuggestion('🗺️ Help me explore')">🗺️ Explore Site</button>
+        <button class="chatbot-suggestion-btn" onclick="sendSuggestion('🧠 What makes him stand out?')">🧠 Standout
+          Features</button>
+        <button class="chatbot-suggestion-btn" onclick="sendSuggestion('🏆 Show achievements')">🏆 Achievements</button>
+      </div>
+
+      <!-- Messages List -->
+      <div class="chatbot-messages" id="chat-messages">
+        <!-- Bot Welcome Msg -->
+        <div class="chat-msg chat-msg-bot">
+          <img src="images/bot-avatar.svg" class="chat-avatar-icon" alt="bot" />
+          <span>Hey there! I am Malav's AI assistant. Ask me anything about his work, experience, robotics, or
+            research!</span>
+        </div>
+      </div>
+
+      <!-- Input Box -->
+      <div class="chatbot-input-area">
+        <input type="text" class="chatbot-input" id="chat-input" placeholder="Ask about Malav..." />
+        <button class="chatbot-send-btn" id="chat-send" disabled>
+          <svg class="chatbot-send-icon" viewBox="0 0 24 24" width="16" height="16">
+            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- ================= MINECRAFT CRAFTING TABLE MODAL ================= -->
+    <div class="modal-overlay" id="crafting-modal">
+      <div class="modal-window crafting-window">
+        <div class="modal-header">
+          <div class="modal-header-left">
+            <span class="pixel-text">🛠️ Minecraft 3x3 Crafting Table</span>
+          </div>
+          <button class="modal-close-btn" onclick="closeCraftingModal()">X</button>
+        </div>
+        <div class="crafting-body">
+          <p class="pixel-text crafting-instruction">Combine ingredients in the 3x3 grid to craft Malav's project
+            recipes!</p>
+
+          <div class="crafting-area">
+            <!-- 3x3 Grid -->
+            <div class="crafting-grid" id="crafting-grid">
+              <button class="craft-slot" data-slot="0" onclick="selectCraftSlot(0)"></button>
+              <button class="craft-slot" data-slot="1" onclick="selectCraftSlot(1)"></button>
+              <button class="craft-slot" data-slot="2" onclick="selectCraftSlot(2)"></button>
+              <button class="craft-slot" data-slot="3" onclick="selectCraftSlot(3)"></button>
+              <button class="craft-slot" data-slot="4" onclick="selectCraftSlot(4)"></button>
+              <button class="craft-slot" data-slot="5" onclick="selectCraftSlot(5)"></button>
+              <button class="craft-slot" data-slot="6" onclick="selectCraftSlot(6)"></button>
+              <button class="craft-slot" data-slot="7" onclick="selectCraftSlot(7)"></button>
+              <button class="craft-slot" data-slot="8" onclick="selectCraftSlot(8)"></button>
+            </div>
+
+            <!-- Crafting Arrow & Action Button -->
+            <button class="craft-action-btn pixel-text" onclick="checkAndCraftRecipe()">Craft! ➔</button>
+
+            <!-- Output Slot -->
+            <div class="craft-output-slot" id="craft-output-slot">
+              <span class="output-icon" id="output-icon">❓</span>
+            </div>
+          </div>
+
+          <!-- Ingredient Picker Inventory -->
+          <div class="ingredient-picker">
+            <span class="pixel-text picker-label">Click an ingredient, then click a grid slot:</span>
+            <div class="ingredient-items">
+              <button class="ing-item pixel-text" onclick="pickIngredient('Python', '🐍')">🐍 Python</button>
+              <button class="ing-item pixel-text" onclick="pickIngredient('ROS2', '🤖')">🤖 ROS2</button>
+              <button class="ing-item pixel-text" onclick="pickIngredient('FastAPI', '⚡')">⚡ FastAPI</button>
+              <button class="ing-item pixel-text" onclick="pickIngredient('FAISS', '🔍')">🔍 FAISS</button>
+              <button class="ing-item pixel-text" onclick="pickIngredient('PyTorch', '🧠')">🧠 PyTorch</button>
+              <button class="ing-item pixel-text" onclick="pickIngredient('U-Net', '🩺')">🩺 U-Net</button>
+              <button class="ing-item pixel-text" onclick="pickIngredient('Clear', '🧹')">🧹 Clear Grid</button>
+            </div>
+          </div>
+
+          <!-- Recipe Result Showcase Card -->
+          <div class="crafted-result-card pixel-text" id="crafted-result-card"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= MINECRAFT COMMAND BAR CONSOLE ================= -->
+    <div class="command-bar-overlay" id="command-bar-overlay">
+      <div class="command-history pixel-text" id="command-history"></div>
+      <div class="command-bar-box">
+        <span class="command-prefix pixel-text">&gt; /</span>
+        <input type="text" class="command-input pixel-text" id="command-input"
+          placeholder="Type a command (/help, /tp about, /skin knight, /biome nether, /clear)..." />
+      </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
 
 </html>
