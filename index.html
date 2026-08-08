@@ -98,15 +98,8 @@
   <!-- Ambient Interactive Minecraft Particles Canvas -->
   <canvas id="ambient-particles-canvas"></canvas>
 
-  <!-- Header Controls Group (Crafting + Skin + Biome + Sound) -->
+  <!-- Header Controls Group (Skin + Biome + Sound) -->
   <div class="header-controls">
-    <!-- Crafting Table Modal Toggle -->
-    <button class="control-btn" id="crafting-switch" onclick="openCraftingModal()" aria-label="Open Crafting Table"
-      title="Crafting Table (E)">
-      <span class="control-icon">🛠️</span>
-      <span class="control-tooltip pixel-text">Crafting Table (E)</span>
-    </button>
-
     <!-- Skin Customizer -->
     <button class="control-btn" id="skin-switch" aria-label="Change Guide Skin" title="Change Guide Outfit">
       <span class="control-icon" id="skin-icon">👕</span>
@@ -1456,61 +1449,7 @@
         </button>
       </div>
     </div>
-    <!-- ================= MINECRAFT CRAFTING TABLE MODAL ================= -->
-    <div class="modal-overlay" id="crafting-modal">
-      <div class="modal-window crafting-window">
-        <div class="modal-header">
-          <div class="modal-header-left">
-            <span class="pixel-text">🛠️ Minecraft 3x3 Crafting Table</span>
-          </div>
-          <button class="modal-close-btn" onclick="closeCraftingModal()">X</button>
-        </div>
-        <div class="crafting-body">
-          <p class="pixel-text crafting-instruction">Combine ingredients in the 3x3 grid to craft Malav's project
-            recipes!</p>
 
-          <div class="crafting-area">
-            <!-- 3x3 Grid -->
-            <div class="crafting-grid" id="crafting-grid">
-              <button class="craft-slot" data-slot="0" onclick="selectCraftSlot(0)"></button>
-              <button class="craft-slot" data-slot="1" onclick="selectCraftSlot(1)"></button>
-              <button class="craft-slot" data-slot="2" onclick="selectCraftSlot(2)"></button>
-              <button class="craft-slot" data-slot="3" onclick="selectCraftSlot(3)"></button>
-              <button class="craft-slot" data-slot="4" onclick="selectCraftSlot(4)"></button>
-              <button class="craft-slot" data-slot="5" onclick="selectCraftSlot(5)"></button>
-              <button class="craft-slot" data-slot="6" onclick="selectCraftSlot(6)"></button>
-              <button class="craft-slot" data-slot="7" onclick="selectCraftSlot(7)"></button>
-              <button class="craft-slot" data-slot="8" onclick="selectCraftSlot(8)"></button>
-            </div>
-
-            <!-- Crafting Arrow & Action Button -->
-            <button class="craft-action-btn pixel-text" onclick="checkAndCraftRecipe()">Craft! ➔</button>
-
-            <!-- Output Slot -->
-            <div class="craft-output-slot" id="craft-output-slot">
-              <span class="output-icon" id="output-icon">❓</span>
-            </div>
-          </div>
-
-          <!-- Ingredient Picker Inventory -->
-          <div class="ingredient-picker">
-            <span class="pixel-text picker-label">Click an ingredient, then click a grid slot:</span>
-            <div class="ingredient-items">
-              <button class="ing-item pixel-text" onclick="pickIngredient('Python', '🐍')">🐍 Python</button>
-              <button class="ing-item pixel-text" onclick="pickIngredient('ROS2', '🤖')">🤖 ROS2</button>
-              <button class="ing-item pixel-text" onclick="pickIngredient('FastAPI', '⚡')">⚡ FastAPI</button>
-              <button class="ing-item pixel-text" onclick="pickIngredient('FAISS', '🔍')">🔍 FAISS</button>
-              <button class="ing-item pixel-text" onclick="pickIngredient('PyTorch', '🧠')">🧠 PyTorch</button>
-              <button class="ing-item pixel-text" onclick="pickIngredient('U-Net', '🩺')">🩺 U-Net</button>
-              <button class="ing-item pixel-text" onclick="pickIngredient('Clear', '🧹')">🧹 Clear Grid</button>
-            </div>
-          </div>
-
-          <!-- Recipe Result Showcase Card -->
-          <div class="crafted-result-card pixel-text" id="crafted-result-card"></div>
-        </div>
-      </div>
-    </div>
 
     <!-- ================= MINECRAFT COMMAND BAR CONSOLE ================= -->
     <div class="command-bar-overlay" id="command-bar-overlay">
