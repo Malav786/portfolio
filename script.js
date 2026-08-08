@@ -110,16 +110,16 @@ const homeView = document.getElementById("home-view");
 
 function startLoader() {
   loaderInterval = setInterval(() => {
-    loaderProgress += 1.5;
+    loaderProgress += 12.5;
     updateLoaderBar();
-  }, 30);
+  }, 20);
 }
 
 function updateLoaderBar() {
   if (loaderProgress >= 100) {
     loaderProgress = 100;
     clearInterval(loaderInterval);
-    setTimeout(completeLoading, 200);
+    setTimeout(completeLoading, 60);
   }
   if (loaderBarFill) {
     loaderBarFill.style.width = `${loaderProgress}%`;
@@ -129,12 +129,12 @@ function updateLoaderBar() {
 function completeLoading() {
   if (loaderScreen) {
     loaderScreen.style.opacity = "0";
-    loaderScreen.style.transition = "opacity 0.5s ease";
+    loaderScreen.style.transition = "opacity 0.25s ease";
     setTimeout(() => {
       loaderScreen.style.display = "none";
       // Trigger subtitle typing
       startTypingSubtitle();
-    }, 500);
+    }, 250);
   }
 }
 
