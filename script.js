@@ -1196,66 +1196,7 @@ function initBiomeSwitcher() {
 // 11. INTERACTIVE MINING DIAMOND ORE WIDGET
 // ==========================================
 
-let mineHits = 0;
-const MAX_MINE_HITS = 5;
 
-function initMiningWidget() {
-  const widget = document.getElementById("mining-block-widget");
-  const oreBlock = document.getElementById("ore-block");
-  const crack = document.getElementById("ore-crack");
-  const label = document.getElementById("ore-label");
-
-  if (!widget || !oreBlock) return;
-
-  widget.addEventListener("click", (e) => {
-    if (mineHits >= MAX_MINE_HITS) return;
-
-    mineHits++;
-    play8BitSound("mine");
-
-    if (crack) {
-      crack.className = "ore-crack";
-      if (mineHits > 0 && mineHits < MAX_MINE_HITS) {
-        crack.classList.add(`stage-${mineHits}`);
-      }
-    }
-
-    if (label) label.textContent = `Mining... (${mineHits}/${MAX_MINE_HITS})`;
-
-    const rect = oreBlock.getBoundingClientRect();
-    const clickX = rect.left + rect.width / 2;
-    const clickY = rect.top + rect.height / 2;
-    // Note: the real click already bubbles to the window particle handler,
-    // so no synthetic event is dispatched here (that doubled the particles).
-
-    if (mineHits >= MAX_MINE_HITS) {
-      play8BitSound("break");
-      oreBlock.style.opacity = "0.2";
-      oreBlock.style.transform = "scale(0.8)";
-      if (label) label.textContent = "✨ MINED!";
-
-      spawnFloatingLoot(clickX, clickY, "💎");
-      setTimeout(() => spawnFloatingLoot(clickX + 18, clickY - 10, "⭐"), 140);
-
-      if (typeof unlockAdvancement === "function") {
-        ADVANCEMENTS["diamond_miner"] = {
-          icon: "💎",
-          title: "Diamond Miner",
-          type: "Secret Challenge Complete!"
-        };
-        unlockAdvancement("diamond_miner");
-      }
-
-      setTimeout(() => {
-        mineHits = 0;
-        if (crack) crack.className = "ore-crack";
-        oreBlock.style.opacity = "1";
-        oreBlock.style.transform = "scale(1)";
-        if (label) label.textContent = "Mine Me! (0/5)";
-      }, 8000);
-    }
-  });
-}
 
 function spawnFloatingLoot(x, y, emoji) {
   const loot = document.createElement("div");
