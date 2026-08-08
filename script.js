@@ -329,13 +329,20 @@ function applyPageChange(pageId) {
 
   if (pageId === "home") {
     if (homeView) homeView.style.display = "flex";
-    document.querySelectorAll(".page-view").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".page-view").forEach(p => {
+      p.classList.remove("active");
+      p.scrollTop = 0;
+    });
+    document.body.classList.remove("page-active");
   } else {
     const selectedPage = document.getElementById(`${pageId}-page`);
     if (!selectedPage) return;
     if (homeView) homeView.style.display = "none";
     document.querySelectorAll(".page-view").forEach(p => p.classList.remove("active"));
     selectedPage.classList.add("active");
+    selectedPage.scrollTop = 0;
+    document.body.classList.add("page-active");
+
     if (pageId === "experience") {
       setTimeout(() => {
         updateExperienceTimelineScroll();
